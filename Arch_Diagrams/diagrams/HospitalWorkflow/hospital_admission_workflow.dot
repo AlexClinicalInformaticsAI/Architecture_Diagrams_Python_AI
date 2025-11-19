@@ -1,0 +1,713 @@
+digraph "Hospital Admission Workflow - ED to Floor" {
+	graph [bb="0,0,6051,966.1",
+		bgcolor=white,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=14,
+		label="Hospital Admission Workflow - ED to Floor",
+		lheight=0.21,
+		lp="3025.5,11.5",
+		lwidth=3.54,
+		nodesep=1.0,
+		pad=0.5,
+		rankdir=TB,
+		ranksep=1.5,
+		splines=ortho
+	];
+	node [fixedsize=true,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		height=1.4,
+		imagescale=true,
+		label="\N",
+		labelloc=b,
+		shape=box,
+		style=rounded,
+		width=1.4
+	];
+	edge [color="#7B8894"];
+	subgraph cluster_Patient {
+		graph [bb="453,318.1,1780,541.2",
+			bgcolor="#E3F2FD",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label=Patient,
+			labeljust=l,
+			lheight=0.18,
+			lp="479.75,530.83",
+			lwidth=0.52,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"3cbf7e46bffa49e79a38f007c5894c01"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/users.png",
+			label="Arrives at ED
+with symptoms",
+			pos="1030,408.9",
+			shape=none];
+		"8ecc61ebe62340198b36b35ce486ffce"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/users.png",
+			label="Provides
+medical history",
+			pos="1376,408.9",
+			shape=none];
+		"7b2b2e787f454685bd5dd8146c71dcae"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/users.png",
+			label="Undergoes
+examination",
+			pos="857,408.9",
+			shape=none];
+		e46666c21270448c8bba1a8474f642b6	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/users.png",
+			label="Receives
+diagnosis",
+			pos="511,408.9",
+			shape=none];
+		"831a4e880cfe43b4afbcf17003c99172"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/users.png",
+			label="Consents to
+admission",
+			pos="684,408.9",
+			shape=none];
+		cb3061eb26ec45788ab70e60432b6561	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/users.png",
+			label="Transported
+to floor",
+			pos="1203,408.9",
+			shape=none];
+		a5141c2103c84a0693e0e6e416f63749	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/users.png",
+			label="Settled in
+room",
+			pos="1549,408.9",
+			shape=none];
+		"70677a80afab4d73bed57568de6653b8"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/users.png",
+			label="Receives
+medications",
+			pos="1722,408.9",
+			shape=none];
+	}
+	subgraph "cluster_ED Nurse" {
+		graph [bb="1219,608.7,2200,831.8",
+			bgcolor="#F3E5F5",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="ED Nurse",
+			labeljust=l,
+			lheight=0.18,
+			lp="1253.2,821.42",
+			lwidth=0.73,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"23e1211d09fa4373bcaa4dc73972154b"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Triages patient
+(vitals, chief complaint)",
+			pos="1623,699.5",
+			shape=none];
+		aab31615d06847fab89338b981a19525	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Documents in EHR
+(initial assessment)",
+			pos="1450,699.5",
+			shape=none];
+		"7d755a3176e4499a87d2826e2e0d011a"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Collects samples
+(labs ordered)",
+			pos="1969,699.5",
+			shape=none];
+		"9e6295bccd44455faedfc819361ba33f"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Monitors patient
+(ongoing vitals)",
+			pos="1796,699.5",
+			shape=none];
+		"366ce816fa5d436a8b868065c79db5bb"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Prepares for
+transport",
+			pos="1277,699.5",
+			shape=none];
+		"554499b64a914b0ea9cf75fd2ff777fd"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Gives report
+to floor nurse",
+			pos="2142,699.5",
+			shape=none];
+	}
+	subgraph "cluster_ED Doctor" {
+		graph [bb="8,608.7,1162,831.8",
+			bgcolor="#E8F5E9",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="ED Doctor",
+			labeljust=l,
+			lheight=0.18,
+			lp="43.75,821.42",
+			lwidth=0.77,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"0892cda91d834d5b868f83b39dbfd0d5"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Reviews triage
+notes in EHR",
+			pos="758,699.5",
+			shape=none];
+		"9ecdc9499410427bb09952a5715d1b4b"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Examines patient
+(physical exam)",
+			pos="1104,699.5",
+			shape=none];
+		"838ec351a0194d68bdace2727786379c"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Orders tests
+(labs, imaging)",
+			pos="412,699.5",
+			shape=none];
+		"0074d1174bcf40b1a01158eac3ccd5d3"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Reviews results
+in EHR",
+			pos="66,699.5",
+			shape=none];
+		"2e11b6af8c6343d8bd38f8642aaba4fc"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Makes diagnosis
+(documents in EHR)",
+			pos="239,699.5",
+			shape=none];
+		"616a4fa8ecaf4a3fad899a74dc2242b6"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Decides admission
+needed",
+			pos="931,699.5",
+			shape=none];
+		de98fdeb7db84f7faed14215cd6c7142	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Consults
+Hospitalist",
+			pos="585,699.5",
+			shape=none];
+	}
+	subgraph cluster_Hospitalist {
+		graph [bb="2466,608.7,3447,831.8",
+			bgcolor="#FFF3E0",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label=Hospitalist,
+			labeljust=l,
+			lheight=0.18,
+			lp="2502.1,821.42",
+			lwidth=0.78,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"2ad4740791e74356a9e5e4f8310a3df5"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Receives consult
+request",
+			pos="2697,699.5",
+			shape=none];
+		e76a1711d0c545b69de167bc0bd166d9	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Reviews patient
+data in EHR",
+			pos="2524,699.5",
+			shape=none];
+		f7d499919c814a76a654d447d56ffc61	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Accepts patient
+for admission",
+			pos="2870,699.5",
+			shape=none];
+		d0950a3591054edca2847cfb68966e27	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Writes admission
+orders in EHR",
+			pos="3043,699.5",
+			shape=none];
+		"46caba5762064d4296513306b2516cf2"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Orders medications
+in EHR",
+			pos="3389,699.5",
+			shape=none];
+		c17275ec28ea484bae253e264d7594ae	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Assigns to
+floor/room",
+			pos="3216,699.5",
+			shape=none];
+	}
+	subgraph "cluster_Floor Nurse" {
+		graph [bb="4370,318.1,5351,831.8",
+			bgcolor="#FCE4EC",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Floor Nurse",
+			labeljust=l,
+			lheight=0.18,
+			lp="4409.5,821.42",
+			lwidth=0.88,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		bbce17136d8b427d8c03deb2aa0f3ad5	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Receives admission
+notification",
+			pos="5120,699.5",
+			shape=none];
+		f545ed48bea0402db5398d610ccc9a0e	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Prepares room
+(equipment, supplies)",
+			pos="5120,408.9",
+			shape=none];
+		bbce17136d8b427d8c03deb2aa0f3ad5 -> f545ed48bea0402db5398d610ccc9a0e	[color=pink,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label="21. Prepares",
+			lp="5158.6,555.95",
+			pos="e,5136.8,491.6 5136.8,617 5136.8,617 5136.8,503.12 5136.8,503.12"];
+		bd9276b1648842a68d564638b2bc6a07	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Receives patient
+from ED",
+			pos="4601,699.5",
+			shape=none];
+		"8ad92a5c3231492084fb188179ac50ef"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Reviews orders
+in EHR",
+			pos="4774,699.5",
+			shape=none];
+		"1006872034664a26bbc2923693df166a"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Performs admission
+assessment",
+			pos="4428,699.5",
+			shape=none];
+		b4c5b7d56ccf49b0a656a696086ec56d	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Documents in EHR
+(nursing assessment)",
+			pos="4947,699.5",
+			shape=none];
+		"7b7d60e13494459dac15fb8782863252"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Administers
+medications",
+			pos="5293,699.5",
+			shape=none];
+	}
+	subgraph cluster_Pharmacist {
+		graph [bb="5408,318.1,6043,831.8",
+			bgcolor="#F1F8E9",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label=Pharmacist,
+			labeljust=l,
+			lheight=0.18,
+			lp="5446,821.42",
+			lwidth=0.83,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		f809276aa4ca4db68f1227660e781eb3	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Receives medication
+orders from EHR",
+			pos="5812,699.5",
+			shape=none];
+		"8e08b65061e046f08abbb9116a9463a6"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Reviews for
+interactions/allergies",
+			pos="5466,699.5",
+			shape=none];
+		e97da07add4f40f99434f22969c1ab87	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Verifies orders
+in EHR",
+			pos="5639,699.5",
+			shape=none];
+		"0ac882ca9cf14e6ca6749b52ab14679c"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Prepares/dispenses
+medications",
+			pos="5985,699.5",
+			shape=none];
+		efb6f083fdd34122bf05eaba54d8c939	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/client.png",
+			label="Delivers to
+floor",
+			pos="5825,408.9",
+			shape=none];
+		"0ac882ca9cf14e6ca6749b52ab14679c" -> efb6f083fdd34122bf05eaba54d8c939	[color=lime,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label="25. Dispenses",
+			lp="5970.8,555.95",
+			pos="e,5868.9,491.54 5934.8,700 5903.4,700 5868.9,700 5868.9,700 5868.9,700 5868.9,503.05 5868.9,503.05"];
+	}
+	subgraph "cluster_EHR System" {
+		graph [bb="2217,31,3371,541.2",
+			bgcolor="#E0F2F1",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="EHR System",
+			labeljust=l,
+			lheight=0.18,
+			lp="2259.5,530.83",
+			lwidth=0.96,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"76af88f871864d369314b098692ed148"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/database/sql.png",
+			label="Patient
+Registration",
+			pos="2275,408.9",
+			shape=none];
+		"47d3a127c6d54b2e9526e5f03c51612f"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/database/sql.png",
+			label="Triage
+Documentation",
+			pos="2448,408.9",
+			shape=none];
+		b01e2c697e14455da97666c503dc0800	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/database/sql.png",
+			label="Order Entry
+System",
+			pos="2621,408.9",
+			shape=none];
+		"6f934f88d45a44a88be650ef21355d5e"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/database/sql.png",
+			label="Lab/Imaging
+Results",
+			pos="2275,121.8",
+			shape=none];
+		b01e2c697e14455da97666c503dc0800 -> "6f934f88d45a44a88be650ef21355d5e"	[color=green,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label="9. Results ready",
+			lp="2507.8,265.35",
+			pos="e,2325.3,149 2621,326.31 2621,250.21 2621,149 2621,149 2621,149 2336.8,149 2336.8,149"];
+		"91a6ef98af7b46b1bc08e09df04a33d4"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/database/sql.png",
+			label="Admission
+Orders",
+			pos="2794,408.9",
+			shape=none];
+		"05e87a6531ce458083de25231184574f"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/database/sql.png",
+			label="Medication
+Orders",
+			pos="3313,408.9",
+			shape=none];
+		b16da8f142504736a3417b396102186d	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/database/sql.png",
+			label="Nursing
+Documentation",
+			pos="2967,408.9",
+			shape=none];
+		"2a555c317f174063957230445df4c6b0"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/database/sql.png",
+			label="Medication
+Administration Record",
+			pos="3140,408.9",
+			shape=none];
+	}
+	"3cbf7e46bffa49e79a38f007c5894c01" -> "23e1211d09fa4373bcaa4dc73972154b"	[color=blue,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="1. Arrives",
+		lp="945.75,555.95",
+		pos="e,1579.3,616.88 1067,491.67 1067,535.76 1067,581 1067,581 1067,581 1579.3,581 1579.3,581 1579.3,581 1579.3,605.36 1579.3,605.36"];
+	cb3061eb26ec45788ab70e60432b6561 -> bd9276b1648842a68d564638b2bc6a07	[color=blue,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="27. Arrives",
+		lp="1606.5,555.95",
+		pos="e,4584.2,616.8 1244.5,491.46 1244.5,533.15 1244.5,575 1244.5,575 1244.5,575 4584.2,575 4584.2,575 4584.2,575 4584.2,605.29 4584.2,\
+605.29"];
+	"23e1211d09fa4373bcaa4dc73972154b" -> "8ecc61ebe62340198b36b35ce486ffce"	[color=blue,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="3. Takes history",
+		lp="1451.5,555.95",
+		pos="e,1413,491.61 1586,617.02 1586,585.51 1586,557 1586,557 1586,557 1413,557 1413,557 1413,557 1413,503.12 1413,503.12"];
+	"23e1211d09fa4373bcaa4dc73972154b" -> "47d3a127c6d54b2e9526e5f03c51612f"	[color=purple,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="2. Documents",
+		lp="1978.2,555.95",
+		pos="e,2448.3,491.53 1635.5,616.9 1635.5,603.01 1635.5,593 1635.5,593 1635.5,593 2448.3,593 2448.3,593 2448.3,593 2448.3,503.04 2448.3,\
+503.04"];
+	"7d755a3176e4499a87d2826e2e0d011a" -> "7b2b2e787f454685bd5dd8146c71dcae"	[color=purple,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="8. Monitors",
+		lp="1084,555.95",
+		pos="e,894,491.68 1952.2,616.81 1952.2,613.16 1952.2,611 1952.2,611 1952.2,611 894,611 894,611 894,611 894,503.2 894,503.2"];
+	"366ce816fa5d436a8b868065c79db5bb" -> cb3061eb26ec45788ab70e60432b6561	[color=purple,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="26. Prepares transport",
+		lp="1261.1,555.95",
+		pos="e,1235.5,491.6 1235.5,617 1235.5,617 1235.5,503.12 1235.5,503.12"];
+	"554499b64a914b0ea9cf75fd2ff777fd" -> bd9276b1648842a68d564638b2bc6a07	[color=purple,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="28. Report",
+		lp="2296,846.55",
+		pos="e,4601,782.21 2142,782.21 2142,797.63 2142,809 2142,809 2142,809 4601,809 4601,809 4601,809 4601,793.73 4601,793.73"];
+	"0892cda91d834d5b868f83b39dbfd0d5" -> "7b2b2e787f454685bd5dd8146c71dcae"	[color=green,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="5. Examines",
+		lp="803.75,555.95",
+		pos="e,806.92,409 782.53,617.03 782.53,531.15 782.53,409 782.53,409 782.53,409 795.4,409 795.4,409"];
+	"9ecdc9499410427bb09952a5715d1b4b" -> b01e2c697e14455da97666c503dc0800	[color=green,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="6. Orders tests",
+		lp="2140.9,555.95",
+		pos="e,2598.5,491.45 1116.5,616.97 1116.5,606.3 1116.5,599 1116.5,599 1116.5,599 2598.5,599 2598.5,599 2598.5,599 2598.5,502.96 2598.5,\
+502.96"];
+	"2e11b6af8c6343d8bd38f8642aaba4fc" -> e46666c21270448c8bba1a8474f642b6	[color=green,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="12. Explains",
+		lp="403.75,555.95",
+		pos="e,460.89,409 255.8,617.03 255.8,531.15 255.8,409 255.8,409 255.8,409 449.37,409 449.37,409"];
+	"2e11b6af8c6343d8bd38f8642aaba4fc" -> "6f934f88d45a44a88be650ef21355d5e"	[color=green,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="11. Documents diagnosis",
+		lp="313.62,408.9",
+		pos="e,2224.8,149 222.2,616.79 222.2,463.11 222.2,149 222.2,149 222.2,149 2213.3,149 2213.3,149"];
+	"616a4fa8ecaf4a3fad899a74dc2242b6" -> "2ad4740791e74356a9e5e4f8310a3df5"	[color=green,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="13. Requests consult",
+		lp="1656,846.55",
+		pos="e,2697,782.23 931,782.23 931,787.65 931,791 931,791 931,791 2697,791 2697,791 2697,791 2697,790.12 2697,790.12"];
+	de98fdeb7db84f7faed14215cd6c7142 -> "831a4e880cfe43b4afbcf17003c99172"	[color=green,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="16. Discusses admission",
+		lp="615.88,555.95",
+		pos="e,633.68,409 597.5,617.03 597.5,531.15 597.5,409 597.5,409 597.5,409 622.17,409 622.17,409"];
+	"2ad4740791e74356a9e5e4f8310a3df5" -> "6f934f88d45a44a88be650ef21355d5e"	[color=orange,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="14. Reviews chart",
+		lp="1969.6,408.9",
+		pos="e,2325,94 2707.5,616.89 2707.5,451.2 2707.5,94 2707.5,94 2707.5,94 2336.5,94 2336.5,94"];
+	e76a1711d0c545b69de167bc0bd166d9 -> de98fdeb7db84f7faed14215cd6c7142	[color=orange,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="15. Accepts",
+		lp="2367,846.55",
+		pos="e,585,782.03 2524,782.03 2524,792.7 2524,800 2524,800 2524,800 585,800 585,800 585,800 585,793.55 585,793.55"];
+	d0950a3591054edca2847cfb68966e27 -> "91a6ef98af7b46b1bc08e09df04a33d4"	[color=orange,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="17. Writes orders",
+		lp="2470,555.95",
+		pos="e,2827.9,491.29 3000.9,616.85 3000.9,590.95 3000.9,569 3000.9,569 3000.9,569 2827.9,569 2827.9,569 2827.9,569 2827.9,502.81 2827.9,\
+502.81"];
+	"46caba5762064d4296513306b2516cf2" -> "05e87a6531ce458083de25231184574f"	[color=orange,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="18. Medication orders",
+		lp="3670.5,555.95",
+		pos="e,3343.6,491.6 3343.6,617 3343.6,617 3343.6,503.12 3343.6,503.12"];
+	c17275ec28ea484bae253e264d7594ae -> "91a6ef98af7b46b1bc08e09df04a33d4"	[color=orange,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="19. Assigns room",
+		lp="2649,555.95",
+		pos="e,2832,491.36 3173.9,616.95 3173.9,588.2 3173.9,563 3173.9,563 3173.9,563 2832,563 2832,563 2832,563 2832,502.88 2832,502.88"];
+	bd9276b1648842a68d564638b2bc6a07 -> "91a6ef98af7b46b1bc08e09df04a33d4"	[color=pink,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="29. Reviews",
+		lp="2969.8,555.95",
+		pos="e,2836.1,491.66 4617.8,616.9 4617.8,577.57 4617.8,539 4617.8,539 4617.8,539 2836.1,539 2836.1,539 2836.1,539 2836.1,503.18 2836.1,\
+503.18"];
+	"8ad92a5c3231492084fb188179ac50ef" -> "91a6ef98af7b46b1bc08e09df04a33d4"	[color=pink,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="30. Checks orders",
+		lp="3138.8,555.95",
+		pos="e,2840.3,491.68 4774,616.74 4774,574.95 4774,533 4774,533 4774,533 2840.3,533 2840.3,533 2840.3,533 2840.3,503.19 2840.3,503.19"];
+	"1006872034664a26bbc2923693df166a" -> a5141c2103c84a0693e0e6e416f63749	[color=pink,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="31. Assesses",
+		lp="2816.4,555.95",
+		pos="e,1592.7,491.56 4428,617 4428,582.82 4428,551 4428,551 4428,551 1592.7,551 1592.7,551 1592.7,551 1592.7,503.07 1592.7,503.07"];
+	b4c5b7d56ccf49b0a656a696086ec56d -> b16da8f142504736a3417b396102186d	[color=pink,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="32. Documents",
+		lp="3316,555.95",
+		pos="e,3009.1,491.55 4947,616.78 4947,570.09 4947,521 4947,521 4947,521 3009.1,521 3009.1,521 3009.1,521 3009.1,503.06 3009.1,503.06"];
+	"7b7d60e13494459dac15fb8782863252" -> "70677a80afab4d73bed57568de6653b8"	[color=pink,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="34. Administers",
+		lp="3483.4,555.95",
+		pos="e,1759,491.6 5267.8,616.82 5267.8,580.09 5267.8,545 5267.8,545 5267.8,545 1759,545 1759,545 1759,545 1759,503.11 1759,503.11"];
+	"7b7d60e13494459dac15fb8782863252" -> "2a555c317f174063957230445df4c6b0"	[color=pink,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="35. Documents",
+		lp="4023,555.95",
+		pos="e,3182.1,491.7 5293,616.88 5293,568.17 5293,516 5293,516 5293,516 3182.1,516 3182.1,516 3182.1,516 3182.1,503.21 3182.1,503.21"];
+	"8e08b65061e046f08abbb9116a9463a6" -> "05e87a6531ce458083de25231184574f"	[color=lime,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="23. Reviews",
+		lp="4181.8,555.95",
+		pos="e,3353.5,491.46 5466,616.93 5466,565.87 5466,510 5466,510 5466,510 3353.5,510 3353.5,510 3353.5,510 3353.5,502.97 3353.5,502.97"];
+	e97da07add4f40f99434f22969c1ab87 -> "05e87a6531ce458083de25231184574f"	[color=lime,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="24. Verifies",
+		lp="4329,555.95",
+		pos="e,3358.4,491.57 5639,616.87 5639,563.52 5639,504 5639,504 5639,504 3358.4,504 3358.4,504 3358.4,504 3358.4,502.76 3358.4,502.76"];
+	efb6f083fdd34122bf05eaba54d8c939 -> "7b7d60e13494459dac15fb8782863252"	[color=lime,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="33. Delivers meds",
+		lp="5776.6,555.95",
+		pos="e,5318.2,617.03 5775,409 5647.2,409 5318.2,409 5318.2,409 5318.2,409 5318.2,605.52 5318.2,605.52"];
+	"47d3a127c6d54b2e9526e5f03c51612f" -> "0892cda91d834d5b868f83b39dbfd0d5"	[color=green,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="4. Reviews",
+		lp="1827,555.95",
+		pos="e,758.47,616.85 2422.9,491.69 2422.9,538.2 2422.9,587 2422.9,587 2422.9,587 758.47,587 758.47,587 758.47,587 758.47,605.34 758.47,\
+605.34"];
+	b01e2c697e14455da97666c503dc0800 -> "7d755a3176e4499a87d2826e2e0d011a"	[color=purple,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="7. Lab orders",
+		lp="2301.8,555.95",
+		pos="e,1985.8,616.97 2622.5,491.5 2622.5,545.09 2622.5,605 2622.5,605 2622.5,605 1985.8,605 1985.8,605 1985.8,605 1985.8,606.2 1985.8,\
+606.2"];
+	"6f934f88d45a44a88be650ef21355d5e" -> "0074d1174bcf40b1a01158eac3ccd5d3"	[color=green,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="10. Reviews",
+		lp="57.75,408.9",
+		pos="e,66,616.89 2224.7,94 1895.9,94 66,94 66,94 66,94 66,605.38 66,605.38"];
+	"91a6ef98af7b46b1bc08e09df04a33d4" -> bbce17136d8b427d8c03deb2aa0f3ad5	[color=pink,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="20. Notification",
+		lp="3856.6,555.95",
+		pos="e,5103.2,616.79 2823.7,491.57 2823.7,511.41 2823.7,527 2823.7,527 2823.7,527 5103.2,527 5103.2,527 5103.2,527 5103.2,605.27 5103.2,\
+605.27"];
+	"05e87a6531ce458083de25231184574f" -> f809276aa4ca4db68f1227660e781eb3	[color=lime,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="22. New orders",
+		lp="5558.8,555.95",
+		pos="e,5768.1,616.96 3348.5,491.59 3348.5,495.6 3348.5,498 3348.5,498 3348.5,498 5768.1,498 5768.1,498 5768.1,498 5768.1,605.45 5768.1,\
+605.45"];
+}
