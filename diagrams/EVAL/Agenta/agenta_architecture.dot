@@ -1,0 +1,477 @@
+digraph "Agenta - LLM Evaluation Platform Architecture" {
+	graph [bb="0,0,1146,1737.6",
+		bgcolor=white,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=14,
+		label="Agenta - LLM Evaluation Platform Architecture",
+		lheight=0.21,
+		lp="573,11.5",
+		lwidth=3.88,
+		nodesep=0.8,
+		pad=0.5,
+		rankdir=TB,
+		ranksep=1.2,
+		splines=ortho
+	];
+	node [fixedsize=true,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		height=1.4,
+		imagescale=true,
+		label="\N",
+		labelloc=b,
+		shape=box,
+		style=rounded,
+		width=1.4
+	];
+	edge [color="#7B8894"];
+	subgraph "cluster_Web UI" {
+		graph [bb="167,1327.7,919,1530",
+			bgcolor="#E3F2FD",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Web UI",
+			labeljust=l,
+			lheight=0.18,
+			lp="194.88,1519.7",
+			lwidth=0.55,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"1c535f378e0e4dcf8f664c358c8ce815"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/framework/\
+fastapi.png",
+			label="Playground
+Test Prompts",
+			pos="543,1418.5",
+			shape=none];
+		"038dfe6c3a044d7bb6ea9b2fe688357e"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/framework/\
+fastapi.png",
+			label="Evaluator
+Run Tests",
+			pos="384,1418.5",
+			shape=none];
+		"09d80a19af3f41509d827f062ca4d38f"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/framework/\
+fastapi.png",
+			label="A/B Testing
+Compare Variants",
+			pos="702,1418.5",
+			shape=none];
+		"653b1a6975934c509c88779b9d52a32e"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/framework/\
+fastapi.png",
+			label="Prompt Manager
+Versioning",
+			pos="861,1418.5",
+			shape=none];
+		"299c5a8e4950458f93c25e51a435d42d"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/framework/\
+fastapi.png",
+			label="Dashboard
+Metrics & Results",
+			pos="225,1418.5",
+			shape=none];
+	}
+	subgraph "cluster_Backend API" {
+		graph [bb="718,575.6,993,1265",
+			bgcolor="#F3E5F5",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Backend API",
+			labeljust=l,
+			lheight=0.18,
+			lp="760.5,1254.6",
+			lwidth=0.96,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"2b616d18b8064e599482048847143a8d"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/framework/\
+fastapi.png",
+			label="FastAPI Server",
+			pos="776,1167.8",
+			shape=none];
+		"59f379e07e1b4e52ae7337a0701f5527"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+			label="Variant Manager",
+			pos="935,917.1",
+			shape=none];
+		"2b616d18b8064e599482048847143a8d" -> "59f379e07e1b4e52ae7337a0701f5527"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=manages,
+			lp="938.38,1049.6",
+			pos="e,898,985.33 826.33,1168 859.93,1168 898,1168 898,1168 898,1168 898,996.84 898,996.84"];
+		"114b50a0ed5b4afca75277750b7718db"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/analytics/spark.png",
+			label="Evaluation Engine",
+			pos="776,917.1",
+			shape=none];
+		"2b616d18b8064e599482048847143a8d" -> "114b50a0ed5b4afca75277750b7718db"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=triggers,
+			lp="806.5,1049.6",
+			pos="e,792.8,985.26 792.8,1099.6 792.8,1099.6 792.8,996.77 792.8,996.77"];
+		"6b9a0690bc82419980f8d199545b1340"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/analytics/spark.png",
+			label="Test Runner",
+			pos="776,652",
+			shape=none];
+		"114b50a0ed5b4afca75277750b7718db" -> "6b9a0690bc82419980f8d199545b1340"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=executes,
+			lp="955,784.55",
+			pos="e,801.2,720.04 801.2,848.83 801.2,848.83 801.2,731.55 801.2,731.55"];
+	}
+	subgraph "cluster_Prompt System" {
+		graph [bb="1014,45.4,1138,749.15",
+			bgcolor="#FFF3E0",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Prompt System",
+			labeljust=l,
+			lheight=0.18,
+			lp="1062.5,738.77",
+			lwidth=1.12,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"2589d7ff43e649108e1fc886d5bab59a"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="Prompt Registry",
+			pos="1076,652",
+			shape=none];
+		"70efdd002e6e45e89e4425919a250f72"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="Variants
+Different Versions",
+			pos="1080,386.9",
+			shape=none];
+		"2589d7ff43e649108e1fc886d5bab59a" -> "70efdd002e6e45e89e4425919a250f72"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=versions,
+			lp="1105.1,519.45",
+			pos="e,1078,469.6 1078,583.73 1078,583.73 1078,481.11 1078,481.11"];
+		"156dc62a4e4847ed99cc36ee842265de"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label=Templates,
+			pos="1080,121.8",
+			shape=none];
+		"70efdd002e6e45e89e4425919a250f72" -> "156dc62a4e4847ed99cc36ee842265de"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=uses,
+			lp="1094.2,254.35",
+			pos="e,1080,190.19 1080,304.11 1080,304.11 1080,201.7 1080,201.7"];
+	}
+	subgraph cluster_Evaluation {
+		graph [bb="386,296.1,979,498.45",
+			bgcolor="#E8F5E9",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label=Evaluation,
+			labeljust=l,
+			lheight=0.18,
+			lp="422.5,488.08",
+			lwidth=0.79,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"720b6620aa8442839b811d6678fc2d95"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="Test Sets
+Datasets",
+			pos="762,386.9",
+			shape=none];
+		"53fd474db0ba450885b3c89f9590c188"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+			label="Evaluators
+Built-in Metrics",
+			pos="921,386.9",
+			shape=none];
+		"80352a000a5047a0b06a448ce6c020a1"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+			label="Custom Evaluators",
+			pos="603,386.9",
+			shape=none];
+		b9b3057ec2d4408cb44c3746b6bb974f	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="Human Evaluation",
+			pos="444,386.9",
+			shape=none];
+	}
+	subgraph "cluster_LLM Integration" {
+		graph [bb="219,31,374,498.45",
+			bgcolor="#E8F4F8",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="LLM Integration",
+			labeljust=l,
+			lheight=0.18,
+			lp="268.25,488.08",
+			lwidth=1.15,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"3e6c6c4758bf4eba892ae737d821b1b4"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/compute/rack.png",
+			label="LLM Providers
+OpenAI, Anthropic, etc",
+			pos="285,386.9",
+			shape=none];
+		af6e16700b4141c784ca0f6f4da69250	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="Model Configs
+Params, Temperature",
+			pos="285,121.8",
+			shape=none];
+		"3e6c6c4758bf4eba892ae737d821b1b4" -> af6e16700b4141c784ca0f6f4da69250	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label="configured by",
+			lp="325.5,254.35",
+			pos="e,285,204.42 285,304.11 285,304.11 285,215.93 285,215.93"];
+	}
+	subgraph "cluster_Data Storage" {
+		graph [bb="554,561.2,675,1014.2",
+			bgcolor="#F3E5F5",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Data Storage",
+			labeljust=l,
+			lheight=0.18,
+			lp="597.25,1003.9",
+			lwidth=0.98,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"5ffef7faef444aed9896eddfa247d1e8"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/database/sql.png",
+			label="MongoDB
+Results & Metadata",
+			pos="617,652",
+			shape=none];
+		"0aa8904180354f35933e9bb91d0a5161"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="Results Store",
+			pos="617,917.1",
+			shape=none];
+		"0aa8904180354f35933e9bb91d0a5161" -> "5ffef7faef444aed9896eddfa247d1e8"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=persists,
+			lp="643.25,784.55",
+			pos="e,633.8,734.7 633.8,848.83 633.8,848.83 633.8,746.21 633.8,746.21"];
+	}
+	subgraph cluster_Deployment {
+		graph [bb="241,826.3,516,1028.6",
+			bgcolor="#FFF3E0",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label=Deployment,
+			labeljust=l,
+			lheight=0.18,
+			lp="281.25,1018.3",
+			lwidth=0.90,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"9043d2a01f294b88856dbee215b6bb68"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/compute/rack.png",
+			label="Docker
+Self-hosted",
+			pos="299,917.1",
+			shape=none];
+		bd0ba8c1811c401d98964a7f7182f10a	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/compute/rack.png",
+			label="Agenta Cloud
+Managed",
+			pos="458,917.1",
+			shape=none];
+	}
+	d66142ae8aa04c8293784410933863da	[height=1.9,
+		image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/users.png",
+		label="Team/Developer",
+		pos="495,1669.2",
+		shape=none];
+	d66142ae8aa04c8293784410933863da -> "1c535f378e0e4dcf8f664c358c8ce815"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=uses,
+		lp="555.25,1551",
+		pos="e,519,1500.9 519,1601 519,1601 519,1512.5 519,1512.5"];
+	d66142ae8aa04c8293784410933863da -> "038dfe6c3a044d7bb6ea9b2fe688357e"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=runs,
+		lp="464.12,1551",
+		pos="e,434.19,1419 468.6,1600.8 468.6,1526.8 468.6,1419 468.6,1419 468.6,1419 445.7,1419 445.7,1419"];
+	d66142ae8aa04c8293784410933863da -> "09d80a19af3f41509d827f062ca4d38f"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=compares,
+		lp="696.25,1551",
+		pos="e,702,1501.3 545.37,1646 606.65,1646 702,1646 702,1646 702,1646 702,1512.8 702,1512.8"];
+	d66142ae8aa04c8293784410933863da -> "653b1a6975934c509c88779b9d52a32e"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=manages,
+		lp="852.38,1551",
+		pos="e,861,1500.9 545.12,1692 645.36,1692 861,1692 861,1692 861,1692 861,1512.4 861,1512.4"];
+	d66142ae8aa04c8293784410933863da -> "299c5a8e4950458f93c25e51a435d42d"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=views,
+		lp="251.88,1551",
+		pos="e,208.2,1500.9 444.72,1692 362.46,1692 208.2,1692 208.2,1692 208.2,1692 208.2,1512.4 208.2,1512.4"];
+	"1c535f378e0e4dcf8f664c358c8ce815" -> "2b616d18b8064e599482048847143a8d"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=calls,
+		lp="608.5,1286",
+		pos="e,725.78,1202 580,1335.7 580,1274.6 580,1202 580,1202 580,1202 714.27,1202 714.27,1202"];
+	"038dfe6c3a044d7bb6ea9b2fe688357e" -> "2b616d18b8064e599482048847143a8d"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=calls,
+		lp="449.5,1286",
+		pos="e,725.89,1168 421,1335.8 421,1262.8 421,1168 421,1168 421,1168 714.38,1168 714.38,1168"];
+	"038dfe6c3a044d7bb6ea9b2fe688357e" -> b9b3057ec2d4408cb44c3746b6bb974f	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=collects,
+		lp="168.5,917.1",
+		pos="e,400.6,455.14 400.6,1335.8 400.6,1335.8 400.6,466.65 400.6,466.65"];
+	"09d80a19af3f41509d827f062ca4d38f" -> "2b616d18b8064e599482048847143a8d"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=calls,
+		lp="732.5,1286",
+		pos="e,739,1235.9 739,1335.7 739,1335.7 739,1247.4 739,1247.4"];
+	"653b1a6975934c509c88779b9d52a32e" -> "2b616d18b8064e599482048847143a8d"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=calls,
+		lp="840.5,1286",
+		pos="e,818.5,1235.9 818.5,1335.7 818.5,1335.7 818.5,1247.4 818.5,1247.4"];
+	"299c5a8e4950458f93c25e51a435d42d" -> d66142ae8aa04c8293784410933863da	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=displays,
+		lp="361.38,1551",
+		pos="e,444.67,1646 241.8,1501.3 241.8,1566.3 241.8,1646 241.8,1646 241.8,1646 433.16,1646 433.16,1646"];
+	"2b616d18b8064e599482048847143a8d" -> "9043d2a01f294b88856dbee215b6bb68"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="runs on",
+		lp="346.5,1049.6",
+		pos="e,341.5,999.72 725.73,1134 611.36,1134 341.5,1134 341.5,1134 341.5,1134 341.5,1011.2 341.5,1011.2",
+		style=dashed];
+	"2b616d18b8064e599482048847143a8d" -> bd0ba8c1811c401d98964a7f7182f10a	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="runs on",
+		lp="589.5,1049.6",
+		pos="e,508.08,993 759.2,1099.5 759.2,1050.4 759.2,993 759.2,993 759.2,993 519.59,993 519.59,993",
+		style=dashed];
+	"59f379e07e1b4e52ae7337a0701f5527" -> "2589d7ff43e649108e1fc886d5bab59a"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=stores,
+		lp="1076.4,784.55",
+		pos="e,1025.8,629 978.4,848.82 978.4,763.63 978.4,629 978.4,629 978.4,629 1014.3,629 1014.3,629"];
+	"114b50a0ed5b4afca75277750b7718db" -> "5ffef7faef444aed9896eddfa247d1e8"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=stores,
+		lp="846.38,784.55",
+		pos="e,667.2,728 750.8,848.83 750.8,794.67 750.8,728 750.8,728 750.8,728 678.72,728 678.72,728"];
+	"6b9a0690bc82419980f8d199545b1340" -> "720b6620aa8442839b811d6678fc2d95"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=uses,
+		lp="783.25,519.45",
+		pos="e,783.47,469.6 783.47,583.73 783.47,583.73 783.47,481.11 783.47,481.11"];
+	"6b9a0690bc82419980f8d199545b1340" -> "53fd474db0ba450885b3c89f9590c188"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=applies,
+		lp="915.38,519.45",
+		pos="e,877.6,469.46 826.2,675 851.8,675 877.6,675 877.6,675 877.6,675 877.6,480.97 877.6,480.97"];
+	"6b9a0690bc82419980f8d199545b1340" -> "80352a000a5047a0b06a448ce6c020a1"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=applies,
+		lp="658.38,519.45",
+		pos="e,610,455.27 754.53,583.94 754.53,551.22 754.53,519 754.53,519 754.53,519 610,519 610,519 610,519 610,466.79 610,466.79"];
+	"6b9a0690bc82419980f8d199545b1340" -> "3e6c6c4758bf4eba892ae737d821b1b4"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=queries,
+		lp="420.12,519.45",
+		pos="e,335.01,463 725.68,652 706.65,652 689.5,652 689.5,652 689.5,652 689.5,463 689.5,463 689.5,463 346.52,463 346.52,463"];
+	"6b9a0690bc82419980f8d199545b1340" -> "0aa8904180354f35933e9bb91d0a5161"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=saves,
+		lp="747.62,784.55",
+		pos="e,600.2,848.93 776,720.33 776,774.8 776,842 776,842 776,842 600.2,842 600.2,842 600.2,842 600.2,842.69 600.2,842.69"];
+	"5ffef7faef444aed9896eddfa247d1e8" -> "299c5a8e4950458f93c25e51a435d42d"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=queries,
+		lp="22.125,1049.6",
+		pos="e,241.6,1335.7 566.76,652 464.47,652 241.6,652 241.6,652 241.6,652 241.6,1324.2 241.6,1324.2"];
+}

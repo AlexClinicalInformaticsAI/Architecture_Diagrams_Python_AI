@@ -1,0 +1,668 @@
+digraph "Promptfoo - LLM Testing & Red Teaming Architecture" {
+	graph [bb="0,0,2815,2097.5",
+		bgcolor=white,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=14,
+		label="Promptfoo - LLM Testing & Red Teaming Architecture",
+		lheight=0.21,
+		lp="1407.5,11.5",
+		lwidth=4.46,
+		nodesep=0.8,
+		pad=0.5,
+		rankdir=TB,
+		ranksep=1.2,
+		splines=ortho
+	];
+	node [fixedsize=true,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		height=1.4,
+		imagescale=true,
+		label="\N",
+		labelloc=b,
+		shape=box,
+		style=rounded,
+		width=1.4
+	];
+	edge [color="#7B8894"];
+	subgraph cluster_Configuration {
+		graph [bb="1746,1321.6,2180,1544.7",
+			bgcolor="#E3F2FD",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label=Configuration,
+			labeljust=l,
+			lheight=0.18,
+			lp="1790,1534.3",
+			lwidth=1.00,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"0797cad7d8b44ae5912358cf12976650"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="YAML/JSON Config
+promptfooconfig.yaml",
+			pos="2122,1412.4",
+			shape=none];
+		b182379891254c05a4fbc9f9bb4cf112	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="Prompts
+Multiple Variations",
+			pos="1804,1412.4",
+			shape=none];
+		"299a90a3c2904c358ee0a9c3894218b2"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="Test Cases
+Variables & Assertions",
+			pos="1963,1412.4",
+			shape=none];
+	}
+	subgraph "cluster_Core Engine" {
+		graph [bb="1897,318.6,2031,1265.1",
+			bgcolor="#F3E5F5",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Core Engine",
+			labeljust=l,
+			lheight=0.18,
+			lp="1938.8,1254.7",
+			lwidth=0.94,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"97aed1f1a8b64fbdb2c9234923de289a"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+javascript.png",
+			label="Config Loader",
+			pos="1963,1147.2",
+			shape=none];
+		f1fdc08db64842c99a8eb428e52669e2	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+javascript.png",
+			label="Test Generator",
+			pos="1963,910.9",
+			shape=none];
+		"97aed1f1a8b64fbdb2c9234923de289a" -> f1fdc08db64842c99a8eb428e52669e2	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=generates,
+			lp="1993,1029",
+			pos="e,1963,979.09 1963,1078.9 1963,1078.9 1963,990.61 1963,990.61"];
+		"7d096827890f411c8177a722da9b0c12"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+javascript.png",
+			label="Parallel Executor",
+			pos="1963,674.6",
+			shape=none];
+		f1fdc08db64842c99a8eb428e52669e2 -> "7d096827890f411c8177a722da9b0c12"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=executes,
+			lp="1990,792.75",
+			pos="e,1963,742.79 1963,842.55 1963,842.55 1963,754.31 1963,754.31"];
+		"2d09413d7c9d48c89fbc9d83b38d4a63"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="Cache
+Avoid Redundant Calls",
+			pos="1963,409.4",
+			shape=none];
+		"7d096827890f411c8177a722da9b0c12" -> "2d09413d7c9d48c89fbc9d83b38d4a63"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=checks,
+			lp="1984,556.45",
+			pos="e,1963,492.13 1963,606.3 1963,606.3 1963,503.64 1963,503.64"];
+	}
+	subgraph "cluster_Provider System" {
+		graph [bb="8,31,776,541.7",
+			bgcolor="#FFF3E0",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Provider System",
+			labeljust=l,
+			lheight=0.18,
+			lp="59.875,531.33",
+			lwidth=1.22,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		subgraph "cluster_LLM Providers" {
+			graph [bb="16,39,768,262.1",
+				bgcolor="#EBF3E7",
+				fontname="Sans-Serif",
+				fontsize=12,
+				label="LLM Providers",
+				labeljust=l,
+				lheight=0.18,
+				lp="62.625,251.73",
+				lwidth=1.07,
+				pencolor="#AEB6BE",
+				rankdir=LR,
+				shape=box,
+				style=rounded
+			];
+			"432d438b9e434a05b7c9104c059fb3f8"	[height=2.3,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/compute/rack.png",
+				label="OpenAI
+GPT-3.5/4/4o",
+				pos="233,129.8",
+				shape=none];
+			"60686daffffd425ba1b585f996fde2b2"	[height=2.3,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/compute/rack.png",
+				label="Anthropic
+Claude 2/3",
+				pos="392,129.8",
+				shape=none];
+			"2cfa84af62c24002b0309909ba27ccc1"	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/compute/rack.png",
+				label="Azure OpenAI",
+				pos="551,129.8",
+				shape=none];
+			"20cdbbbb76ec44f8932597d7b18e974d"	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/compute/rack.png",
+				label="AWS Bedrock",
+				pos="710,129.8",
+				shape=none];
+			"9a3edc675c8644bfb238c1aad846d616"	[height=2.3,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/compute/rack.png",
+				label="Ollama
+Local Models",
+				pos="74,129.8",
+				shape=none];
+		}
+		"96b60460a7d54675b7a71d98911a5024"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+javascript.png",
+			label="Provider Manager
+Unified Interface",
+			pos="471,409.4",
+			shape=none];
+		"96b60460a7d54675b7a71d98911a5024" -> "432d438b9e434a05b7c9104c059fb3f8"	[color=blue,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=OpenAI,
+			lp="291.5,276.85",
+			pos="e,233,212.38 420.82,382 350.99,382 233,382 233,382 233,382 233,223.89 233,223.89"];
+		"96b60460a7d54675b7a71d98911a5024" -> "60686daffffd425ba1b585f996fde2b2"	[color=purple,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=Anthropic,
+			lp="430.5,276.85",
+			pos="e,431.5,212.34 431.5,326.65 431.5,326.65 431.5,223.86 431.5,223.86"];
+		"96b60460a7d54675b7a71d98911a5024" -> "2cfa84af62c24002b0309909ba27ccc1"	[color=cyan,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=Azure,
+			lp="558.62,276.85",
+			pos="e,511,197.76 511,326.65 511,326.65 511,209.28 511,209.28"];
+		"96b60460a7d54675b7a71d98911a5024" -> "20cdbbbb76ec44f8932597d7b18e974d"	[color=orange,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=Bedrock,
+			lp="703.75,276.85",
+			pos="e,710,198.08 521.39,334 591.51,334 710,334 710,334 710,334 710,209.59 710,209.59"];
+		"96b60460a7d54675b7a71d98911a5024" -> "9a3edc675c8644bfb238c1aad846d616"	[color=green,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=Local,
+			lp="133.12,276.85",
+			pos="e,74,212.53 420.72,437 313.89,437 74,437 74,437 74,437 74,224.04 74,224.04"];
+	}
+	subgraph "cluster_Assertion Framework" {
+		graph [bb="803,45.4,1889,527.3",
+			bgcolor="#E8F5E9",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Assertion Framework",
+			labeljust=l,
+			lheight=0.18,
+			lp="867.62,516.92",
+			lwidth=1.57,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		subgraph "cluster_Assertion Types" {
+			graph [bb="811,53.4,1881,247.7",
+				bgcolor="#EBF3E7",
+				fontname="Sans-Serif",
+				fontsize=12,
+				label="Assertion Types",
+				labeljust=l,
+				lheight=0.18,
+				lp="861.75,237.32",
+				lwidth=1.19,
+				pencolor="#AEB6BE",
+				rankdir=LR,
+				shape=box,
+				style=rounded
+			];
+			"16db41d38b2d49579d7e75f9644eb5f4"	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label=contains,
+				pos="1028,129.8",
+				shape=none];
+			"2e7f35f569254ee5abd0f17e47e54a47"	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label=equals,
+				pos="1187,129.8",
+				shape=none];
+			ad951a934f074903aec55d8b6c07346a	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label=regex,
+				pos="1346,129.8",
+				shape=none];
+			"24ba04480c0d4156a35693c53f7bb852"	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label="llm-rubric",
+				pos="1505,129.8",
+				shape=none];
+			dcf4b79892ba4822a84ac4c4b1bcc7e7	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label=similarity,
+				pos="1664,129.8",
+				shape=none];
+			"84b2befc54f84d8a951ca1b6ffe60dd3"	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label=cost,
+				pos="1823,129.8",
+				shape=none];
+			bdb74975b5e045ac8103e626b4f5173b	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label=latency,
+				pos="869,129.8",
+				shape=none];
+		}
+		e8e25a1f84074fa0852766f6bb793f35	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+javascript.png",
+			label="Assertion Engine",
+			pos="1505,409.4",
+			shape=none];
+		e8e25a1f84074fa0852766f6bb793f35 -> "16db41d38b2d49579d7e75f9644eb5f4"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=uses,
+			lp="1126.2,276.85",
+			pos="e,1028,198.17 1454.9,423 1332.4,423 1028,423 1028,423 1028,423 1028,209.69 1028,209.69"];
+		e8e25a1f84074fa0852766f6bb793f35 -> "2e7f35f569254ee5abd0f17e47e54a47"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=uses,
+			lp="1285.2,276.85",
+			pos="e,1187,198.01 1454.6,396 1364.9,396 1187,396 1187,396 1187,396 1187,209.52 1187,209.52"];
+		e8e25a1f84074fa0852766f6bb793f35 -> ad951a934f074903aec55d8b6c07346a	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=uses,
+			lp="1410.2,276.85",
+			pos="e,1346,198.06 1454.7,368 1408.1,368 1346,368 1346,368 1346,368 1346,209.57 1346,209.57"];
+		e8e25a1f84074fa0852766f6bb793f35 -> "24ba04480c0d4156a35693c53f7bb852"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=uses,
+			lp="1519.2,276.85",
+			pos="e,1505,197.98 1505,341 1505,341 1505,209.49 1505,209.49"];
+		e8e25a1f84074fa0852766f6bb793f35 -> dcf4b79892ba4822a84ac4c4b1bcc7e7	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=uses,
+			lp="1644.2,276.85",
+			pos="e,1621.6,198.05 1555.1,387 1586.7,387 1621.6,387 1621.6,387 1621.6,387 1621.6,209.56 1621.6,209.56"];
+		e8e25a1f84074fa0852766f6bb793f35 -> "84b2befc54f84d8a951ca1b6ffe60dd3"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=uses,
+			lp="1786.2,276.85",
+			pos="e,1799.9,198 1555.4,432 1639.6,432 1799.9,432 1799.9,432 1799.9,432 1799.9,209.51 1799.9,209.51"];
+		e8e25a1f84074fa0852766f6bb793f35 -> bdb74975b5e045ac8103e626b4f5173b	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=uses,
+			lp="900.25,276.85",
+			pos="e,869,198.1 1454.8,450 1304.6,450 869,450 869,450 869,450 869,209.61 869,209.61"];
+	}
+	subgraph "cluster_Red Team Module" {
+		graph [bb="2039,45.4,2807,527.3",
+			bgcolor="#FFEBEE",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Red Team Module",
+			labeljust=l,
+			lheight=0.18,
+			lp="2095.8,516.92",
+			lwidth=1.35,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		subgraph "cluster_Attack Strategies" {
+			graph [bb="2047,53.4,2799,247.7",
+				bgcolor="#EBF3E7",
+				fontname="Sans-Serif",
+				fontsize=12,
+				label="Attack Strategies",
+				labeljust=l,
+				lheight=0.18,
+				lp="2100,237.32",
+				lwidth=1.25,
+				pencolor="#AEB6BE",
+				rankdir=LR,
+				shape=box,
+				style=rounded
+			];
+			"603bd9c1d2ec4317b31cfd8f56301b32"	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label="Prompt Injection",
+				pos="2264,129.8",
+				shape=none];
+			"03a46eaf27f44286aae283ba07bc4178"	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label=Jailbreaking,
+				pos="2423,129.8",
+				shape=none];
+			"3e1949f34b32430bb6ade294ca0a7974"	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label="PII Leakage",
+				pos="2582,129.8",
+				shape=none];
+			"4f68308ad10a4116806eee2cde342868"	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label="Harmful Content",
+				pos="2741,129.8",
+				shape=none];
+			"64067522f0d84b078b031c20570b2a47"	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+python.png",
+				label="Bias Detection",
+				pos="2105,129.8",
+				shape=none];
+		}
+		"76517f8803a24ca0a0c9e66d9dd073fd"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+javascript.png",
+			label="Red Team Engine",
+			pos="2264,409.4",
+			shape=none];
+		"76517f8803a24ca0a0c9e66d9dd073fd" -> "603bd9c1d2ec4317b31cfd8f56301b32"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=tests,
+			lp="2278.2,276.85",
+			pos="e,2264,197.98 2264,341 2264,341 2264,209.49 2264,209.49"];
+		"76517f8803a24ca0a0c9e66d9dd073fd" -> "03a46eaf27f44286aae283ba07bc4178"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=tests,
+			lp="2403.2,276.85",
+			pos="e,2410.5,198.1 2314,375 2356.4,375 2410.5,375 2410.5,375 2410.5,375 2410.5,209.62 2410.5,209.62"];
+		"76517f8803a24ca0a0c9e66d9dd073fd" -> "3e1949f34b32430bb6ade294ca0a7974"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=tests,
+			lp="2545.2,276.85",
+			pos="e,2569.5,198.1 2314.1,409 2400.8,409 2569.5,409 2569.5,409 2569.5,409 2569.5,209.61 2569.5,209.61"];
+		"76517f8803a24ca0a0c9e66d9dd073fd" -> "4f68308ad10a4116806eee2cde342868"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=tests,
+			lp="2696.2,276.85",
+			pos="e,2741,197.98 2314.1,444 2436.6,444 2741,444 2741,444 2741,444 2741,209.49 2741,209.49"];
+		"76517f8803a24ca0a0c9e66d9dd073fd" -> "64067522f0d84b078b031c20570b2a47"	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=tests,
+			lp="2153.2,276.85",
+			pos="e,2099.5,198.1 2213.8,409 2165.4,409 2099.5,409 2099.5,409 2099.5,409 2099.5,209.61 2099.5,209.61"];
+	}
+	subgraph "cluster_Output & Reporting" {
+		graph [bb="1622,1601.2,1897,2089.5",
+			bgcolor="#E8F4F8",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="Output & Reporting",
+			labeljust=l,
+			lheight=0.18,
+			lp="1681,2079.1",
+			lwidth=1.42,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		"02318f1030b348afb79874baf68b84f8"	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="Test Results
+JSON/CSV",
+			pos="1680,1957.2",
+			shape=none];
+		c24ae256d1884c32a2375506bf6dc532	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/framework/\
+fastapi.png",
+			label="Web UI
+Comparison Matrix",
+			pos="1680,1692",
+			shape=none];
+		"02318f1030b348afb79874baf68b84f8" -> c24ae256d1884c32a2375506bf6dc532	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=displays,
+			lp="1712.4,1824.6",
+			pos="e,1649.8,1774.4 1649.8,1874.7 1649.8,1874.7 1649.8,1785.9 1649.8,1785.9"];
+		a332e61db9cd4d9aa3bee4389e9ca0d5	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/programming/language/\
+javascript.png",
+			label="CLI Output",
+			pos="1839,1692",
+			shape=none];
+		"02318f1030b348afb79874baf68b84f8" -> a332e61db9cd4d9aa3bee4389e9ca0d5	[dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label=prints,
+			lp="1816.5,1824.6",
+			pos="e,1839,1760.4 1669.9,1874.5 1669.9,1836.6 1669.9,1800 1669.9,1800 1669.9,1800 1839,1800 1839,1800 1839,1800 1839,1771.9 1839,1771.9"];
+		a48d709b1fef4a7681bd8a754ecc12f0	[height=2.3,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/storage/storage.png",
+			label="Risk Report
+Security Assessment",
+			pos="1839,1957.2",
+			shape=none];
+	}
+	subgraph "cluster_CI/CD Integration" {
+		graph [bb="2340,1615.6,2615,1809.9",
+			bgcolor="#F3E5F5",
+			fontname="Sans-Serif",
+			fontsize=12,
+			label="CI/CD Integration",
+			labeljust=l,
+			lheight=0.18,
+			lp="2394.1,1799.5",
+			lwidth=1.28,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=rounded
+		];
+		c4e84f5acbd54d82999300d8d78278b9	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/vcs/github.png",
+			label="GitHub Actions",
+			pos="2557,1692",
+			shape=none];
+		"6e566c3c60544534be02dbdfc1d24602"	[height=1.9,
+			image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/generic/compute/rack.png",
+			label="GitLab CI",
+			pos="2398,1692",
+			shape=none];
+	}
+	"714469052a364cab9341a20ae479d5aa"	[height=1.9,
+		image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/users.png",
+		label=Developer,
+		pos="2055,1692",
+		shape=none];
+	"714469052a364cab9341a20ae479d5aa" -> "0797cad7d8b44ae5912358cf12976650"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=creates,
+		lp="2130.1,1559.4",
+		pos="e,2088.5,1495 2088.5,1623.6 2088.5,1623.6 2088.5,1506.5 2088.5,1506.5"];
+	"714469052a364cab9341a20ae479d5aa" -> b182379891254c05a4fbc9f9bb4cf112	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=defines,
+		lp="1840.8,1559.4",
+		pos="e,1821.5,1494.8 2006.8,1623.6 2006.8,1588.1 2006.8,1552 2006.8,1552 2006.8,1552 1821.5,1552 1821.5,1552 1821.5,1552 1821.5,1506.3 \
+1821.5,1506.3"];
+	"714469052a364cab9341a20ae479d5aa" -> "299a90a3c2904c358ee0a9c3894218b2"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=writes,
+		lp="1999.6,1559.4",
+		pos="e,2011.2,1495 2011.2,1623.6 2011.2,1623.6 2011.2,1506.5 2011.2,1506.5"];
+	"0797cad7d8b44ae5912358cf12976650" -> "97aed1f1a8b64fbdb2c9234923de289a"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=loads,
+		lp="2106.1,1279.8",
+		pos="e,2013.2,1147 2127.5,1329.9 2127.5,1252 2127.5,1147 2127.5,1147 2127.5,1147 2024.8,1147 2024.8,1147"];
+	b182379891254c05a4fbc9f9bb4cf112 -> "97aed1f1a8b64fbdb2c9234923de289a"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=loads,
+		lp="1852.1,1279.8",
+		pos="e,1912.8,1147 1827.1,1329.9 1827.1,1252 1827.1,1147 1827.1,1147 1827.1,1147 1901.3,1147 1901.3,1147"];
+	"299a90a3c2904c358ee0a9c3894218b2" -> "97aed1f1a8b64fbdb2c9234923de289a"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=loads,
+		lp="1979.1,1279.8",
+		pos="e,1963,1215.4 1963,1329.9 1963,1329.9 1963,1226.9 1963,1226.9"];
+	"7d096827890f411c8177a722da9b0c12" -> "96b60460a7d54675b7a71d98911a5024"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=routes,
+		lp="1699.8,556.45",
+		pos="e,471,492.2 1912.9,697 1653.2,697 471,697 471,697 471,697 471,503.71 471,503.71"];
+	"7d096827890f411c8177a722da9b0c12" -> e8e25a1f84074fa0852766f6bb793f35	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=validates,
+		lp="1840.6,556.45",
+		pos="e,1521.8,477.62 1912.8,652 1797.2,652 1521.8,652 1521.8,652 1521.8,652 1521.8,489.14 1521.8,489.14"];
+	"7d096827890f411c8177a722da9b0c12" -> "76517f8803a24ca0a0c9e66d9dd073fd"	[color=red,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="security scan",
+		lp="2146.4,556.45",
+		pos="e,2247.2,477.8 2013.2,675 2094.7,675 2247.2,675 2247.2,675 2247.2,675 2247.2,489.31 2247.2,489.31",
+		style=dashed];
+	e8e25a1f84074fa0852766f6bb793f35 -> "02318f1030b348afb79874baf68b84f8"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=results,
+		lp="1542.9,1147.2",
+		pos="e,1629.6,1957 1488.2,477.64 1488.2,776.74 1488.2,1957 1488.2,1957 1488.2,1957 1618.1,1957 1618.1,1957"];
+	"76517f8803a24ca0a0c9e66d9dd073fd" -> a48d709b1fef4a7681bd8a754ecc12f0	[color=red,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=findings,
+		lp="2283.2,1147.2",
+		pos="e,1889.2,1985 2280.8,477.61 2280.8,780.03 2280.8,1985 2280.8,1985 2280.8,1985 1900.8,1985 1900.8,1985"];
+	"02318f1030b348afb79874baf68b84f8" -> c4e84f5acbd54d82999300d8d78278b9	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=integrates,
+		lp="2195.6,1824.6",
+		pos="e,2557,1759.9 1710.2,1874.6 1710.2,1859.8 1710.2,1849 1710.2,1849 1710.2,1849 2557,1849 2557,1849 2557,1849 2557,1771.5 2557,1771.5",
+		style=dashed];
+	"02318f1030b348afb79874baf68b84f8" -> "6e566c3c60544534be02dbdfc1d24602"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=integrates,
+		lp="2073.6,1824.6",
+		pos="e,2398,1760.1 1690.1,1874.6 1690.1,1847.9 1690.1,1825 1690.1,1825 1690.1,1825 2398,1825 2398,1825 2398,1825 2398,1771.6 2398,1771.6",
+		style=dashed];
+	c24ae256d1884c32a2375506bf6dc532 -> "714469052a364cab9341a20ae479d5aa"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=views,
+		lp="1855,1824.6",
+		pos="e,2009,1623.8 1730.3,1616 1822.5,1616 2009,1616 2009,1616 2009,1616 2009,1616.8 2009,1616.8"];
+	a332e61db9cd4d9aa3bee4389e9ca0d5 -> "714469052a364cab9341a20ae479d5aa"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=views,
+		lp="0,31",
+		pos="e,2004.9,1692 1889.4,1692 1889.4,1692 1993.4,1692 1993.4,1692"];
+	a48d709b1fef4a7681bd8a754ecc12f0 -> "714469052a364cab9341a20ae479d5aa"	[dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label=reviews,
+		lp="1957.9,1824.6",
+		pos="e,2055,1760.2 1889.4,1930 1953.2,1930 2055,1930 2055,1930 2055,1930 2055,1771.7 2055,1771.7"];
+}

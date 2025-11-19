@@ -11,11 +11,17 @@ This repository generates Azure architecture diagrams from Infrastructure-as-Cod
 ### System Dependencies
 
 1. **GraphViz** must be installed on the system:
-   - Download from: https://graphviz.org/download/
-   - Windows: Install to `C:\Program Files\Graphviz`
+   - macOS: `brew install graphviz`
+   - Linux: `sudo apt-get install graphviz` or equivalent
+   - Windows: Download from https://graphviz.org/download/ and install to `C:\Program Files\Graphviz`
    - The Python `graphviz` library requires this to be available in PATH
 
-2. **Python Dependencies** (install from `Arch_Diagrams/requirements.txt`):
+2. **graphviz2drawio** for Draw.io conversion (required for .drawio output):
+   - macOS: `brew install graphviz2drawio`
+   - Python 3.10+ required (installed automatically via Homebrew)
+   - Without this tool, only .png and .dot files will be generated
+
+3. **Python Dependencies** (install from `Arch_Diagrams/requirements.txt`):
    ```bash
    cd Arch_Diagrams
    pip install -r requirements.txt
@@ -24,8 +30,8 @@ This repository generates Azure architecture diagrams from Infrastructure-as-Cod
    Key packages:
    - `diagrams==0.24.4` - Core diagram generation library
    - `graphviz==0.20.3` - Python wrapper for GraphViz
-   - `pygraphviz==1.14` - C extension bindings (requires MSVC compiler on Windows)
-   - `graphviz2drawio==1.1.0` - Converts DOT files to Draw.io format
+
+   Note: `pygraphviz` and `graphviz2drawio` Python packages are NOT required in the venv as we use the Homebrew-installed `graphviz2drawio` binary which includes its own Python 3.14 environment.
 
 ## Common Commands
 
@@ -34,17 +40,21 @@ This repository generates Azure architecture diagrams from Infrastructure-as-Cod
 From the `Arch_Diagrams` directory:
 
 ```bash
-# Generate Contoso Medical Portal architecture diagram (complex multi-tier)
+# Generate Contoso Medical Portal architecture diagram (complex multi-tier Azure PaaS)
 python contoso_architecture.py
 
-# Generate IIS + SQL Server 3-tier diagram (from Bicep demo)
+# Generate IIS + SQL Server 3-tier diagram (traditional Azure IaaS from Bicep demo)
 python bicep_iis_sql_diagram.py
+
+# Generate GamELY LLM Evaluation Framework architecture (Python package workflow)
+# Note: GamELY files are organized in diagrams/EVAL/Gamely/
+python diagrams/EVAL/Gamely/gamely_architecture.py
 ```
 
 Output files are generated in `Arch_Diagrams/diagrams/` with three formats:
 - `.png` - Visual diagram
 - `.dot` - GraphViz source file
-- `.drawio` - Draw.io editable format
+- `.drawio` - Draw.io editable format (if graphviz2drawio is installed)
 
 ### Infrastructure as Code Examples
 
@@ -97,7 +107,10 @@ All Python diagram generators follow a consistent structure:
    - `style` - Line style: "solid", "dotted", "dashed"
    - `color` - Connection color for visual grouping
 
-6. **Post-process DOT to Draw.io** using `graphviz2drawio` subprocess
+6. **Post-process DOT to Draw.io** using `graphviz2drawio` subprocess:
+   - Requires `graphviz2drawio` to be installed via Homebrew (`brew install graphviz2drawio`)
+   - The subprocess calls the system `graphviz2drawio` command, NOT the Python package
+   - If the command is not found, the script will skip .drawio generation but still create .png and .dot files
 
 ### Example Architecture Patterns
 
@@ -112,6 +125,14 @@ All Python diagram generators follow a consistent structure:
 - Load Balancer → Availability Set (2 IIS VMs) → SQL Server VM
 - Demonstrates availability sets, managed disks, and NSG rules
 - Maps directly to Bicep template at `bicep-demo/demos/iis-2vm-sql-1vm/main.bicep`
+
+**GamELY LLM Evaluation Framework** (`diagrams/EVAL/Gamely/gamely_architecture.py`):
+- Python package architecture for evaluating LLM outputs using LLMs as judges
+- Workflow: Input DataFrame → Provider Mapper → API Validation → Batch Evaluation → Scored Output
+- Supports 3 LLM providers: OpenAI (GPT-3.5/4/4o/o1), Anthropic (Claude 2/3), DeepSeek (Chat/Reasoner)
+- 17 built-in evaluation criteria: accuracy, comprehension, reasoning, bias, toxicity, hallucination, etc.
+- Demonstrates software architecture patterns: provider abstraction, batch processing, API integration
+- Scoring: 1-5 Likert scale (strongly disagree → strongly agree) + NaN for irrelevant criteria
 
 ## IaC Template Structure
 
@@ -168,6 +189,40 @@ When creating a new Python diagram generator for Azure architectures:
 - Files: `{architecture_name}_diagram.py`
 - Output: `diagrams/{architecture_name}.*`
 - Resources: Follow Azure naming patterns (e.g., `vnet-*`, `app-*`, `sqlsrv-*`)
+
+## Troubleshooting
+
+### Draw.io Files Not Generated
+
+If .drawio files are not being created:
+
+1. **Check if graphviz2drawio is installed**:
+   ```bash
+   which graphviz2drawio
+   # Should return: /opt/homebrew/bin/graphviz2drawio (or similar)
+   ```
+
+2. **Install graphviz2drawio via Homebrew**:
+   ```bash
+   brew install graphviz2drawio
+   ```
+
+3. **Manual conversion** (if scripts didn't generate .drawio):
+   ```bash
+   graphviz2drawio diagrams/your_diagram.dot -o diagrams/your_diagram.drawio
+   ```
+
+**Important**: The system-level `graphviz2drawio` command is used, NOT the Python package. Homebrew installs it with Python 3.14 in its own isolated environment, so it works regardless of your venv's Python version.
+
+### graphviz2drawio Output
+
+- The tool will properly convert DOT files to mxGraph XML format used by Draw.io
+- The resulting .drawio files can be opened directly in https://app.diagrams.net
+- The conversion preserves:
+  - Node positioning and sizes
+  - Cluster/group hierarchies
+  - Edge connections and labels
+  - Colors and styling
 
 ## Project Video Tutorial
 

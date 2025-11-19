@@ -1,0 +1,321 @@
+digraph "IIS + SQL Server 3-Tier Architecture (Bicep Demo)" {
+	graph [bb="0,0,938,1917.5",
+		bgcolor=white,
+		compound=true,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=14,
+		label="IIS + SQL Server 3-Tier Architecture (Bicep Demo)",
+		lheight=0.21,
+		lp="469,11.5",
+		lwidth=4.24,
+		nodesep=1.0,
+		pad=0.5,
+		rankdir=TB,
+		ranksep=1.5,
+		splines=ortho
+	];
+	node [fixedsize=true,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		height=1.4,
+		imagescale=true,
+		label="\N",
+		labelloc=b,
+		shape=box,
+		style=rounded,
+		width=1.4
+	];
+	edge [color="#7B8894"];
+	subgraph "cluster_cust1Vnet
+(10.0.0.0/16)" {
+		graph [bb="8,31,930,1401.8",
+			bgcolor="#E8F4F8",
+			fontname="Sans-Serif",
+			fontsize=14,
+			label="cust1Vnet
+(10.0.0.0/16)",
+			labeljust=l,
+			labelloc=t,
+			lheight=0.42,
+			lp="54.25,1382.8",
+			lwidth=1.06,
+			margin=25,
+			pencolor="#AEB6BE",
+			rankdir=LR,
+			shape=box,
+			style=dashed
+		];
+		subgraph "cluster_Load Balancer" {
+			graph [bb="33,1088.8,163,1334.7",
+				bgcolor="#F3E5F5",
+				fontname="Sans-Serif",
+				fontsize=13,
+				label="Load Balancer",
+				labeljust=l,
+				labelloc=t,
+				lheight=0.19,
+				lp="84.5,1324",
+				lwidth=1.21,
+				margin=15,
+				pencolor="#AEB6BE",
+				rankdir=LR,
+				shape=box,
+				style=rounded
+			];
+			"25a4e955f0a647f7be706f7740fa21f3"	[height=2.7,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/network/load-balancers.png",
+				label="cust1webSrvlb
+(Load Balancer)
+Port 80",
+				pos="98,1201",
+				shape=none];
+		}
+		subgraph "cluster_FESubnetName
+(10.0.0.0/24)" {
+			graph [bb="188,69.8,531,1338.8",
+				bgcolor="#E3F2FD",
+				fontname="Sans-Serif",
+				fontsize=13,
+				label="FESubnetName
+(10.0.0.0/24)",
+				labeljust=l,
+				labelloc=t,
+				lheight=0.38,
+				lp="243.62,1321.3",
+				lwidth=1.32,
+				margin=20,
+				pencolor="#AEB6BE",
+				rankdir=LR,
+				shape=box,
+				style=rounded
+			];
+			subgraph "cluster_Availability Set" {
+				graph [bb="208,89.8,511,967.5",
+					bgcolor="#E8F5E9",
+					fontname="Sans-Serif",
+					fontsize=13,
+					label="Availability Set",
+					labeljust=l,
+					labelloc=t,
+					lheight=0.19,
+					lp="259.5,956.75",
+					lwidth=1.21,
+					margin=15,
+					pencolor="#AEB6BE",
+					rankdir=LR,
+					shape=box,
+					style=rounded
+				];
+				b34d07be5342469786147fc6a7688bf5	[height=2.3,
+					image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/compute/availability-sets.png",
+					label="cust1webSrvAS
+(2 Fault/20 Update Domains)",
+					pos="357,187.6",
+					shape=none];
+				b8346812db26463d9c370748858c2463	[height=3.1,
+					image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/compute/vm.png",
+					label="cust1webSrv0
+Windows Server 2022
+IIS Web Server
+D2s_v3",
+					pos="446,532.3",
+					shape=none];
+				b8346812db26463d9c370748858c2463 -> b34d07be5342469786147fc6a7688bf5	[color=green,
+					dir=forward,
+					fontcolor="#2D3436",
+					fontname="Sans-Serif",
+					fontsize=13,
+					label=Member,
+					lp="444,359.95",
+					pos="e,401.5,270.24 401.5,420.86 401.5,420.86 401.5,281.76 401.5,281.76",
+					style=dotted];
+				"272d9e067e644d82b7bb1384cd034e84"	[height=3.1,
+					image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/compute/vm.png",
+					label="cust1webSrv1
+Windows Server 2022
+IIS Web Server
+D2s_v3",
+					pos="273,532.3",
+					shape=none];
+				"272d9e067e644d82b7bb1384cd034e84" -> b34d07be5342469786147fc6a7688bf5	[color=green,
+					dir=forward,
+					fontcolor="#2D3436",
+					fontname="Sans-Serif",
+					fontsize=13,
+					label=Member,
+					lp="319,359.95",
+					pos="e,312.2,270.24 312.2,420.86 312.2,420.86 312.2,281.76 312.2,281.76",
+					style=dotted];
+				"21a95e92c5f44032b4546bd260b07c4b"	[height=1.9,
+					image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/network/network-interfaces.png",
+					label=NIC0,
+					pos="446,862.6",
+					shape=none];
+				"21a95e92c5f44032b4546bd260b07c4b" -> b8346812db26463d9c370748858c2463	[color=darkblue,
+					dir=forward,
+					fontcolor="#2D3436",
+					fontname="Sans-Serif",
+					fontsize=13,
+					pos="e,446,643.81 446,794.56 446,794.56 446,655.32 446,655.32"];
+				"91dc84502f91441e8d9bda36ef470c34"	[height=1.9,
+					image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/network/network-interfaces.png",
+					label=NIC1,
+					pos="273,862.6",
+					shape=none];
+				"91dc84502f91441e8d9bda36ef470c34" -> "272d9e067e644d82b7bb1384cd034e84"	[color=darkblue,
+					dir=forward,
+					fontcolor="#2D3436",
+					fontname="Sans-Serif",
+					fontsize=13,
+					pos="e,273,643.81 273,794.56 273,794.56 273,655.32 273,655.32"];
+			}
+			"4a892458752a47e8aa5ed059f1c13033"	[height=2.3,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/network/network-security-groups-classic.png",
+				label="feNsg
+(Allow HTTP 80)",
+				pos="446,1201",
+				shape=none];
+			"4a892458752a47e8aa5ed059f1c13033" -> "21a95e92c5f44032b4546bd260b07c4b"	[color=red,
+				dir=forward,
+				fontcolor="#2D3436",
+				fontname="Sans-Serif",
+				fontsize=13,
+				label=Protects,
+				lp="470.75,1036.3",
+				pos="e,462.8,930.87 462.8,1118.2 462.8,1118.2 462.8,942.39 462.8,942.39",
+				style=dotted];
+		}
+		subgraph "cluster_DBSubnetName
+(10.0.2.0/24)" {
+			graph [bb="556,56,905,1014.8",
+				bgcolor="#FFF3E0",
+				fontname="Sans-Serif",
+				fontsize=13,
+				label="DBSubnetName
+(10.0.2.0/24)",
+				labeljust=l,
+				labelloc=t,
+				lheight=0.38,
+				lp="612.38,997.3",
+				lwidth=1.34,
+				margin=20,
+				pencolor="#AEB6BE",
+				rankdir=LR,
+				shape=box,
+				style=rounded
+			];
+			f7de893fcac04f29b12abc0b48388d82	[height=2.7,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/network/network-security-groups-classic.png",
+				label="dbNsg
+(Allow SQL 1433)
+(Block Internet)",
+				pos="637,862.6",
+				shape=none];
+			ffd46586a7284f17a274f75438bf6466	[height=1.9,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/network/network-interfaces.png",
+				label=sqlSrvNIC,
+				pos="748,532.3",
+				shape=none];
+			f7de893fcac04f29b12abc0b48388d82 -> ffd46586a7284f17a274f75438bf6466	[color=red,
+				dir=forward,
+				fontcolor="#2D3436",
+				fontname="Sans-Serif",
+				fontsize=13,
+				label=Protects,
+				lp="672.75,704.65",
+				pos="e,728.6,600.63 687.36,773 708.64,773 728.6,773 728.6,773 728.6,773 728.6,612.14 728.6,612.14",
+				style=dotted];
+			"470c4a11a0c24354bb9120b22b4a1ab4"	[height=3.1,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/compute/vm.png",
+				label="cust1sqlSrv14
+SQL Server 2022
+Standard Edition
+D4s_v3",
+				pos="682,187.6",
+				shape=none];
+			ffd46586a7284f17a274f75438bf6466 -> "470c4a11a0c24354bb9120b22b4a1ab4"	[color=darkorange,
+				dir=forward,
+				fontcolor="#2D3436",
+				fontname="Sans-Serif",
+				fontsize=13,
+				pos="e,715,298.98 715,464.2 715,464.2 715,310.49 715,310.49"];
+			c49d00ba50e34574905a738ffb8d1dbe	[height=2.3,
+				image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/network/public-ip-addresses.png",
+				label="SqlPIP
+(Management)",
+				pos="810,862.6",
+				shape=none];
+			c49d00ba50e34574905a738ffb8d1dbe -> ffd46586a7284f17a274f75438bf6466	[color=gray,
+				dir=forward,
+				fontcolor="#2D3436",
+				fontname="Sans-Serif",
+				fontsize=13,
+				label="RDP/Management",
+				lp="829.75,704.65",
+				pos="e,779,600.68 779,780.1 779,780.1 779,612.19 779,612.19",
+				style=dashed];
+		}
+		"25a4e955f0a647f7be706f7740fa21f3" -> "21a95e92c5f44032b4546bd260b07c4b"	[color=blue,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label="Port 80
+(Backend Pool)",
+			lp="322.12,1036.3",
+			pos="e,429.2,930.69 148.3,1113 240.95,1113 429.2,1113 429.2,1113 429.2,1113 429.2,942.21 429.2,942.21"];
+		"25a4e955f0a647f7be706f7740fa21f3" -> "91dc84502f91441e8d9bda36ef470c34"	[color=blue,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label="Port 80
+(Backend Pool)",
+			lp="152.12,1036.3",
+			pos="e,273,930.91 148.15,1109 199.86,1109 273,1109 273,1109 273,1109 273,942.42 273,942.42"];
+		b8346812db26463d9c370748858c2463 -> "470c4a11a0c24354bb9120b22b4a1ab4"	[color=orange,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label="SQL:1433",
+			lp="712,359.95",
+			pos="e,659.5,299.18 496.33,442 559.45,442 659.5,442 659.5,442 659.5,442 659.5,310.7 659.5,310.7"];
+		"272d9e067e644d82b7bb1384cd034e84" -> "470c4a11a0c24354bb9120b22b4a1ab4"	[color=orange,
+			dir=forward,
+			fontcolor="#2D3436",
+			fontname="Sans-Serif",
+			fontsize=13,
+			label="SQL:1433",
+			lp="575,359.95",
+			pos="e,631.74,285 317.8,420.95 317.8,355.31 317.8,285 317.8,285 317.8,285 620.23,285 620.23,285"];
+	}
+	"37a59f8c5b754f4a851062d895e84d31"	[height=1.9,
+		image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/onprem/client/users.png",
+		label="Internet Users",
+		pos="98,1849.1",
+		shape=none];
+	"2ec0a2cc1af141e3a7b3050a9d430c4a"	[height=2.7,
+		image="/Users/alexwork/Documents/Github/Architecture_Diagrams_Python_AI/venv/lib/python3.9/site-packages/resources/azure/network/public-ip-addresses.png",
+		label="cust1websrvpip
+(Web LB Public IP)
+DNS: cust1websrvlb",
+		pos="98,1562",
+		shape=none];
+	"37a59f8c5b754f4a851062d895e84d31" -> "2ec0a2cc1af141e3a7b3050a9d430c4a"	[color=blue,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		label="HTTPS/HTTP",
+		lp="139.62,1720",
+		pos="e,98,1659.2 98,1781.1 98,1781.1 98,1670.7 98,1670.7"];
+	"2ec0a2cc1af141e3a7b3050a9d430c4a" -> "25a4e955f0a647f7be706f7740fa21f3"	[color=blue,
+		dir=forward,
+		fontcolor="#2D3436",
+		fontname="Sans-Serif",
+		fontsize=13,
+		pos="e,98,1298 98,1465.3 98,1465.3 98,1309.5 98,1309.5"];
+}
