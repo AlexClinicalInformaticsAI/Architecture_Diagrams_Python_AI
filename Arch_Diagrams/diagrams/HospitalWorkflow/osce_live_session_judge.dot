@@ -1,0 +1,176 @@
+// OSCE Live Session - AI Patient with LLM-as-Judge
+digraph {
+	bgcolor=white fontname=Arial fontsize=12 nodesep=0.8 rankdir=TB ranksep=0.8 splines=ortho
+	node [fontname=Arial fontsize=10]
+	edge [fontname=Arial fontsize=9]
+	n1 [label="START
+OSCE Session Begins" fillcolor=lightgreen penwidth=2 shape=ellipse style=filled]
+	subgraph cluster_setup {
+		fillcolor="#E3F2FD" fontsize=12 label="Session Setup" style=filled
+		n2 [label="📋 Load OSCE Case
+Retrieve from library
+Case ID: #12345" fillcolor="#BBDEFB" shape=box style=filled]
+		n3 [label="📊 Load Assessment Rubric
+Learning objectives
+Scoring criteria" fillcolor="#90CAF9" shape=parallelogram style=filled]
+		n4 [label="🤖 Initialize AI Patient
+Load persona
+Set emotional state
+[Claude Opus 4]" fillcolor="#64B5F6" penwidth=2 shape=hexagon style=filled]
+		n5 [label="⚖️ Initialize LLM Judge
+Load rubric
+Set evaluation mode
+[Claude Sonnet 4]" fillcolor="#42A5F5" penwidth=2 shape=hexagon style=filled]
+		n6 [label="🎙️ Start Recording
+Audio + Text transcript
+Timestamped" fillcolor="#2196F3" fontcolor=white shape=box style=filled]
+	}
+	subgraph cluster_student {
+		fillcolor="#E8F5E9" fontsize=12 label="Medical Student" style=filled
+		n7 [label="👨‍⚕️ Student Introduction
+\"Hello, I'm Dr. Smith...\"" fillcolor="#C8E6C9" shape=box style=filled]
+		n8 [label="❓ Ask Question
+\"What brings you in today?\"" fillcolor="#C8E6C9" shape=box style=filled]
+		n9 [label="👂 Listen to Response
+Active listening
+Note-taking" fillcolor="#C8E6C9" shape=box style=filled]
+		n10 [label="🔍 Follow-up Questions
+Clarify symptoms
+Explore history" fillcolor="#C8E6C9" shape=box style=filled]
+		n11 [label="⏱️ Time Remaining?" fillcolor="#A5D6A7" shape=diamond style=filled]
+		n12 [label="📝 Summarize Findings
+Present differential
+Propose next steps" fillcolor="#C8E6C9" shape=box style=filled]
+	}
+	subgraph cluster_ai_patient {
+		fillcolor="#FFF3E0" fontsize=12 label="AI Patient (Simulated)" style=filled
+		n13 [label="🤖 Generate Response
+Stay in character
+Reveal info appropriately
+[Claude Opus 4]" fillcolor="#FFE0B2" penwidth=2 shape=box style=filled]
+		n14 [label="😟 Emotional State
+Anxious/Worried/Calm
+Adjust based on rapport" fillcolor="#FFCC80" shape=box style=filled]
+		n15 [label="✓ Consistency Check
+Match previous responses
+Maintain character" fillcolor="#FFB74D" shape=diamond style=filled]
+		n16 [label="💬 Deliver Response
+Text-to-speech
+Natural pacing" fillcolor="#FFA726" shape=box style=filled]
+	}
+	subgraph cluster_judge {
+		fillcolor="#F3E5F5" fontsize=12 label="LLM-as-Judge (Real-time Evaluation)" style=filled
+		n17 [label="📝 Capture Exchange
+Student question
+Patient response
+Timestamp" fillcolor="#E1BEE7" shape=parallelogram style=filled]
+		n18 [label="⚖️ Evaluate Question
+• Open-ended?
+• Appropriate?
+• Clear?
+[Claude Sonnet 4]" fillcolor="#CE93D8" penwidth=2 shape=box style=filled]
+		n19 [label="⚖️ Evaluate Communication
+• Empathy
+• Active listening
+• Rapport building
+[Claude Sonnet 4]" fillcolor="#CE93D8" penwidth=2 shape=box style=filled]
+		n20 [label="⚖️ Evaluate Clinical Reasoning
+• Systematic approach
+• Relevant questions
+• Differential thinking
+[Claude Sonnet 4]" fillcolor="#CE93D8" penwidth=2 shape=box style=filled]
+		n21 [label="📊 Update Running Score
+Communication: 8/10
+Clinical: 7/10
+Professionalism: 9/10" fillcolor="#BA68C8" shape=note style=filled]
+		n22 [label="🚩 Critical Issue
+Detected?" fillcolor="#AB47BC" shape=diamond style=filled]
+		n23 [label="⚠️ Alert Proctor
+Safety concern
+Professionalism issue" color=red fillcolor="#FFCDD2" penwidth=2 shape=box style=filled]
+	}
+	subgraph cluster_recording {
+		fillcolor="#E0F2F1" fontsize=12 label="Recording & Storage" style=filled
+		n24 [label="📝 Transcript Buffer
+Real-time text capture
+Speaker labels
+Timestamps" fillcolor="#B2DFDB" shape=parallelogram style=filled]
+		n25 [label="🎙️ Audio Buffer
+High-quality recording
+Stereo channels" fillcolor="#80CBC4" shape=parallelogram style=filled]
+		n26 [label="📌 Judge Annotations
+Real-time scores
+Flags & comments
+Timestamped" fillcolor="#4DB6AC" shape=parallelogram style=filled]
+	}
+	n27 [label="⏰ Session Time Complete
+(10 minutes)" fillcolor="#FFF9C4" shape=box style=filled]
+	subgraph cluster_finalize {
+		fillcolor="#FFFDE7" fontsize=12 label="Session Finalization" style=filled
+		n28 [label="⏹️ Stop Recording
+Finalize audio
+Complete transcript" fillcolor="#FFF59D" shape=box style=filled]
+		n29 [label="📦 Compile Session Data
+• Full transcript
+• Audio file
+• Judge annotations
+• Running scores" fillcolor="#FFF176" shape=box style=filled]
+		n30 [label="💾 Save to Database
+Session ID: #67890
+Student ID
+Case ID
+Timestamp" fillcolor="#FFEE58" shape=cylinder style=filled]
+		n31 [label="📋 Queue for Deep Evaluation
+Send to DeepEval pipeline
+Full rubric analysis" fillcolor="#FFEB3B" shape=box style=filled]
+	}
+	n32 [label="END
+Session Complete
+Ready for Analysis" fillcolor=lightcoral penwidth=2 shape=ellipse style=filled]
+	n1 -> n2
+	n2 -> n3
+	n3 -> n4
+	n3 -> n5
+	n4 -> n6
+	n5 -> n6
+	n6 -> n7 [label=Begin color=green style=bold]
+	n7 -> n8
+	n8 -> n17 [label=Record color=blue]
+	n8 -> n13 [label=Ask color=green style=bold]
+	n13 -> n14
+	n14 -> n15
+	n15 -> n16 [label=Valid color=green]
+	n15 -> n13 [label=Adjust color=orange style=dashed]
+	n16 -> n9 [label=Respond color=green style=bold]
+	n16 -> n17 [label=Record color=blue]
+	n9 -> n10
+	n10 -> n11
+	n11 -> n8 [label="YES
+(Continue)" color=green style=dashed]
+	n11 -> n12 [label="NO
+(Time up)" color=red]
+	n17 -> n18 [label=Analyze color=purple style=bold]
+	n17 -> n19 [label=Analyze color=purple style=bold]
+	n17 -> n20 [label=Analyze color=purple style=bold]
+	n18 -> n21 [label=Score color=purple]
+	n19 -> n21 [label=Score color=purple]
+	n20 -> n21 [label=Score color=purple]
+	n21 -> n22
+	n22 -> n23 [label="YES
+(Critical)" color=red style=bold]
+	n22 -> n26 [label="NO
+(Continue)" color=green]
+	n17 -> n24 [label=Text color=blue]
+	n8 -> n25 [label=Audio color=blue]
+	n16 -> n25 [label=Audio color=blue]
+	n21 -> n26 [label=Annotate color=purple]
+	n12 -> n27
+	n27 -> n28
+	n28 -> n29
+	n24 -> n29 [label=Merge]
+	n25 -> n29 [label=Merge]
+	n26 -> n29 [label=Merge]
+	n29 -> n30
+	n30 -> n31
+	n31 -> n32 [label="Ready for DeepEval" color=purple style=bold]
+}

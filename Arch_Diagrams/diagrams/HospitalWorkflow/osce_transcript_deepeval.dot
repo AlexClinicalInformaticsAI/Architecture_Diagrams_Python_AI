@@ -1,0 +1,236 @@
+// OSCE Transcript Evaluation with DeepEval
+digraph {
+	bgcolor=white fontname=Arial fontsize=12 nodesep=0.8 rankdir=TB ranksep=0.8 splines=ortho
+	node [fontname=Arial fontsize=10]
+	edge [fontname=Arial fontsize=9]
+	n1 [label="START
+Transcript Ready
+for Evaluation" fillcolor=lightgreen penwidth=2 shape=ellipse style=filled]
+	subgraph cluster_prep {
+		fillcolor="#E3F2FD" fontsize=12 label="Data Preparation" style=filled
+		n2 [label="📥 Load Session Data
+Session ID: #67890
+Student ID
+Case ID" fillcolor="#BBDEFB" shape=box style=filled]
+		n3 [label="📝 Load Full Transcript
+Student questions
+Patient responses
+Timestamps" fillcolor="#90CAF9" shape=parallelogram style=filled]
+		n4 [label="📊 Load Assessment Rubric
+• Communication (30%)
+• Clinical reasoning (40%)
+• Professionalism (20%)
+• Data gathering (10%)" fillcolor="#64B5F6" shape=parallelogram style=filled]
+		n5 [label="🎯 Load Learning Objectives
+1. Obtain complete history
+2. Build rapport
+3. Demonstrate empathy
+4. Systematic approach" fillcolor="#42A5F5" shape=note style=filled]
+		n6 [label="✂️ Segment Transcript
+Introduction
+Chief complaint
+History of present illness
+Review of systems
+Summary" fillcolor="#2196F3" fontcolor=white shape=box style=filled]
+	}
+	subgraph cluster_deepeval_init {
+		fillcolor="#F3E5F5" fontsize=12 label="DeepEval Framework Setup" style=filled
+		n7 [label="⚡ Initialize DeepEval
+import deepeval
+from deepeval.metrics import *" fillcolor="#E1BEE7" penwidth=2 shape=hexagon style=filled]
+		n8 [label="🧪 Create Test Cases
+LLMTestCase per segment
+input = question
+actual_output = response
+context = case info" fillcolor="#CE93D8" shape=box style=filled]
+		n9 [label="📏 Define Evaluation Metrics
+14+ DeepEval metrics
+Custom OSCE metrics" fillcolor="#BA68C8" shape=box style=filled]
+	}
+	subgraph cluster_comm {
+		fillcolor="#C8E6C9" label="Communication Metrics" style=filled
+		n10 [label="📊 Answer Relevancy
+Are questions relevant?
+Threshold: 0.80" fillcolor="#A5D6A7" shape=box style=filled]
+		n11 [label="📊 G-Eval: Empathy
+Criteria: Shows compassion
+Threshold: 0.75" fillcolor="#A5D6A7" shape=box style=filled]
+		n12 [label="📊 G-Eval: Clarity
+Criteria: Clear questions
+Threshold: 0.80" fillcolor="#A5D6A7" shape=box style=filled]
+	}
+	subgraph cluster_clinical {
+		fillcolor="#BBDEFB" label="Clinical Reasoning Metrics" style=filled
+		n13 [label="📊 Contextual Recall
+All key info gathered?
+Threshold: 0.85" fillcolor="#90CAF9" shape=box style=filled]
+		n14 [label="📊 Contextual Precision
+Relevant questions only?
+Threshold: 0.80" fillcolor="#90CAF9" shape=box style=filled]
+		n15 [label="📊 G-Eval: Systematic
+Criteria: Organized approach
+Threshold: 0.75" fillcolor="#90CAF9" shape=box style=filled]
+	}
+	subgraph cluster_prof {
+		fillcolor="#FFF9C4" label="Professionalism Metrics" style=filled
+		n16 [label="📊 Bias Detection
+Any biased language?
+Threshold: 0.20" fillcolor="#FFF59D" shape=box style=filled]
+		n17 [label="📊 Toxicity Check
+Inappropriate language?
+Threshold: 0.10" fillcolor="#FFF59D" shape=box style=filled]
+		n18 [label="📊 G-Eval: Professional
+Criteria: Maintains boundaries
+Threshold: 0.85" fillcolor="#FFF59D" shape=box style=filled]
+	}
+	subgraph cluster_custom {
+		fillcolor="#FFCCBC" label="Custom OSCE Metrics" style=filled
+		n19 [label="📊 Custom: Introduction
+Proper self-introduction?
+Threshold: 1.0" fillcolor="#FFAB91" shape=box style=filled]
+		n20 [label="📊 Custom: Consent
+Asked permission?
+Threshold: 1.0" fillcolor="#FFAB91" shape=box style=filled]
+		n21 [label="📊 Custom: Summary
+Summarized findings?
+Threshold: 0.80" fillcolor="#FFAB91" shape=box style=filled]
+	}
+	subgraph cluster_metrics {
+		fillcolor="#E8F5E9" fontsize=12 label="DeepEval Metrics (Parallel Execution)" style=filled
+	}
+	subgraph cluster_execution {
+		fillcolor="#E0F2F1" fontsize=12 label="Evaluation Execution" style=filled
+		n22 [label="▶️ Run DeepEval
+evaluate(test_cases, metrics)
+Parallel execution" fillcolor="#B2DFDB" penwidth=2 shape=box style=filled]
+		n23 [label="📊 Aggregate Scores
+Weighted by rubric
+Communication: 8.2/10
+Clinical: 7.5/10
+Professional: 9.1/10" fillcolor="#80CBC4" shape=box style=filled]
+		n24 [label="🎯 Calculate Final Score
+Weighted average
+Total: 81.5/100" fillcolor="#4DB6AC" fontcolor=white shape=box style=filled]
+		n25 [label="Score >= 70%
+(Pass Threshold)?" fillcolor="#26A69A" shape=diamond style=filled]
+	}
+	subgraph cluster_feedback {
+		fillcolor="#FFF3E0" fontsize=12 label="Feedback Generation" style=filled
+		n26 [label="💪 Generate Strengths
+LLM analyzes high scores
+\"Excellent empathy shown\"
+[Claude Sonnet 4]" fillcolor="#FFE0B2" penwidth=2 shape=box style=filled]
+		n27 [label="📈 Generate Improvements
+LLM analyzes low scores
+\"Ask more open-ended questions\"
+[Claude Sonnet 4]" fillcolor="#FFCC80" penwidth=2 shape=box style=filled]
+		n28 [label="📌 Provide Specific Examples
+Timestamped transcript excerpts
+\"At 3:45, you interrupted...\"" fillcolor="#FFB74D" shape=note style=filled]
+		n29 [label="📚 Recommend Resources
+Based on weak areas
+Videos, articles, practice cases" fillcolor="#FFA726" shape=note style=filled]
+		n30 [label="📝 Compile Feedback Report
+Structured by rubric
+Actionable recommendations" fillcolor="#FF9800" fontcolor=white shape=box style=filled]
+	}
+	subgraph cluster_results {
+		fillcolor="#FFFDE7" fontsize=12 label="Results & Storage" style=filled
+		n31 [label="📄 Create Detailed Report
+• Overall score
+• Metric breakdown
+• Strengths
+• Improvements
+• Examples
+• Resources" fillcolor="#FFF9C4" shape=note style=filled]
+		n32 [label="💾 Store in Database
+Student performance DB
+Linked to session" fillcolor="#FFF59D" shape=cylinder style=filled]
+		n33 [label="📈 Upload to Confident AI
+DeepEval cloud platform
+Tracking & analytics" fillcolor="#FFF176" shape=cylinder style=filled]
+		n34 [label="📧 Notify Student
+Email with report link
+Available for review" fillcolor="#FFEE58" shape=box style=filled]
+		n35 [label="📧 Notify Faculty
+Dashboard updated
+Cohort analytics" fillcolor="#FFEB3B" shape=box style=filled]
+	}
+	subgraph cluster_analytics {
+		fillcolor="#E1BEE7" fontsize=12 label="Analytics & Continuous Improvement" style=filled
+		n36 [label="📊 Cohort Analysis
+Compare to peers
+Identify trends" fillcolor="#CE93D8" shape=box style=filled]
+		n37 [label="📈 Case Difficulty Analysis
+Average scores per case
+Calibrate difficulty" fillcolor="#BA68C8" shape=box style=filled]
+		n38 [label="🔍 Metric Reliability Check
+Compare LLM vs human scores
+Refine thresholds" fillcolor="#AB47BC" shape=box style=filled]
+		n39 [label="🔄 Update AI Models
+Retrain on validated data
+Improve accuracy" fillcolor="#9C27B0" fontcolor=white shape=box style=filled]
+	}
+	n40 [label="END
+Evaluation Complete
+Feedback Delivered" fillcolor=lightcoral penwidth=2 shape=ellipse style=filled]
+	n1 -> n2
+	n2 -> n3
+	n2 -> n4
+	n2 -> n5
+	n3 -> n6
+	n6 -> n7 [label=Ready color=purple style=bold]
+	n4 -> n7
+	n5 -> n7
+	n7 -> n8
+	n8 -> n9
+	n9 -> n10 [label=Communication color=green]
+	n9 -> n11 [label=Communication color=green]
+	n9 -> n12 [label=Communication color=green]
+	n9 -> n13 [label=Clinical color=blue]
+	n9 -> n14 [label=Clinical color=blue]
+	n9 -> n15 [label=Clinical color=blue]
+	n9 -> n16 [label=Professional color=orange]
+	n9 -> n17 [label=Professional color=orange]
+	n9 -> n18 [label=Professional color=orange]
+	n9 -> n19 [label=Custom color=red]
+	n9 -> n20 [label=Custom color=red]
+	n9 -> n21 [label=Custom color=red]
+	n10 -> n22 [label=Metric color=purple]
+	n11 -> n22 [label=Metric color=purple]
+	n12 -> n22 [label=Metric color=purple]
+	n13 -> n22 [label=Metric color=purple]
+	n14 -> n22 [label=Metric color=purple]
+	n15 -> n22 [label=Metric color=purple]
+	n16 -> n22 [label=Metric color=purple]
+	n17 -> n22 [label=Metric color=purple]
+	n18 -> n22 [label=Metric color=purple]
+	n19 -> n22 [label=Metric color=purple]
+	n20 -> n22 [label=Metric color=purple]
+	n21 -> n22 [label=Metric color=purple]
+	n22 -> n23 [label=Results color=purple style=bold]
+	n23 -> n24
+	n24 -> n25
+	n25 -> n26 [label="Pass/Fail" color=green]
+	n23 -> n26 [label="High scores"]
+	n23 -> n27 [label="Low scores"]
+	n6 -> n28 [label=Excerpts style=dashed]
+	n27 -> n29
+	n26 -> n30
+	n27 -> n30
+	n28 -> n30
+	n29 -> n30
+	n30 -> n31
+	n24 -> n31 [label="Final score"]
+	n31 -> n32
+	n31 -> n33 [label=Upload color=purple]
+	n32 -> n34
+	n32 -> n35
+	n32 -> n36 [label=Aggregate style=dashed]
+	n32 -> n37 [label=Aggregate style=dashed]
+	n33 -> n38 [label=Analyze style=dashed]
+	n38 -> n39 [label=Insights]
+	n39 -> n7 [label="Improved models" color=purple style=dashed]
+	n34 -> n40
+	n35 -> n40
+}

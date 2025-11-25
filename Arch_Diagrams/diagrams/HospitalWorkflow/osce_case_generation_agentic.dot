@@ -1,0 +1,139 @@
+// OSCE Case Generation - Agentic AI System
+digraph {
+	bgcolor=white fontname=Arial fontsize=12 nodesep=0.8 rankdir=TB ranksep=0.8 splines=ortho
+	node [fontname=Arial fontsize=10]
+	edge [fontname=Arial fontsize=9]
+	n1 [label="START
+Case Generation Request" fillcolor=lightgreen penwidth=2 shape=ellipse style=filled]
+	subgraph cluster_input {
+		fillcolor="#E3F2FD" fontsize=12 label="Input Specification" style=filled
+		n2 [label="Define Requirements:
+• Learning objectives
+• Clinical domain
+• Difficulty level
+• Patient demographics" fillcolor="#BBDEFB" shape=box style=filled]
+		n3 [label="Rubric Requirements:
+• Assessment criteria
+• Scoring weights
+• Pass threshold" fillcolor="#90CAF9" shape=parallelogram style=filled]
+	}
+	subgraph cluster_orchestrator {
+		fillcolor="#FFF3E0" fontsize=12 label="Agent Orchestrator" style=filled
+		n4 [label="🎯 Orchestrator Agent
+Coordinates all agents
+[Claude Opus 4]" fillcolor="#FFE0B2" penwidth=2 shape=box style=filled]
+		n5 [label="Create Task Plan:
+1. Case scenario
+2. Patient profile
+3. Rubric
+4. Validation" fillcolor="#FFCC80" shape=note style=filled]
+	}
+	subgraph cluster_agents {
+		fillcolor="#E8F5E9" fontsize=12 label="Specialized AI Agents" style=filled
+		n6 [label="🤖 Medical Writer Agent
+Generate case scenario
+Patient history
+[Claude Sonnet 4]" fillcolor="#C8E6C9" penwidth=2 shape=box style=filled]
+		n7 [label="🤖 Patient Persona Agent
+Create character profile
+Emotional state
+Communication style
+[Claude Sonnet 4]" fillcolor="#C8E6C9" penwidth=2 shape=box style=filled]
+		n8 [label="🤖 Clinical Expert Agent
+Validate medical accuracy
+Check differential diagnosis
+[Claude Opus 4]" fillcolor="#C8E6C9" penwidth=2 shape=box style=filled]
+		n9 [label="🤖 Rubric Builder Agent
+Create assessment rubric
+Define scoring criteria
+[Claude Sonnet 4]" fillcolor="#C8E6C9" penwidth=2 shape=box style=filled]
+	}
+	subgraph cluster_deepeval {
+		fillcolor="#F3E5F5" fontsize=12 label="DeepEval Validation Layer" style=filled
+		n10 [label="⚡ Initialize DeepEval
+Load evaluation metrics" fillcolor="#E1BEE7" shape=hexagon style=filled]
+		n11 [label="✓ Medical Accuracy Check
+G-Eval: Clinical correctness
+Threshold: 0.90" color=purple fillcolor="#CE93D8" penwidth=2 shape=diamond style=filled]
+		n12 [label="✓ Rubric Quality Check
+G-Eval: Completeness
+Threshold: 0.85" color=purple fillcolor="#CE93D8" penwidth=2 shape=diamond style=filled]
+		n13 [label="✓ Bias Detection
+DeepEval: Bias metric
+Threshold: 0.20" color=purple fillcolor="#CE93D8" penwidth=2 shape=diamond style=filled]
+		n14 [label="✓ Internal Consistency
+Custom metric:
+Scenario ↔ Rubric alignment" color=purple fillcolor="#CE93D8" penwidth=2 shape=diamond style=filled]
+	}
+	subgraph cluster_qa {
+		fillcolor="#FFFDE7" fontsize=12 label="Human Quality Assurance" style=filled
+		n15 [label="All DeepEval
+Metrics Pass?" fillcolor="#FFF9C4" shape=diamond style=filled]
+		n16 [label="👤 Faculty Review
+Physician validation
+Pedagogy check" fillcolor="#FFF59D" penwidth=2 shape=trapezium style=filled]
+		n17 [label="Approved for
+Production?" fillcolor="#FFF9C4" shape=diamond style=filled]
+		n18 [label="💬 Revision Feedback
+Specific improvements needed" fillcolor="#FFEB3B" shape=note style=filled]
+	}
+	subgraph cluster_output {
+		fillcolor="#E0F2F1" fontsize=12 label="Output & Storage" style=filled
+		n19 [label="📦 Complete OSCE Package:
+• Case scenario
+• Patient persona
+• Assessment rubric
+• DeepEval scores" fillcolor="#B2DFDB" shape=note style=filled]
+		n20 [label="📊 Metadata:
+• Generation timestamp
+• Agent versions
+• Validation scores
+• Review status" fillcolor="#80CBC4" shape=parallelogram style=filled]
+		n21 [label="💾 Case Library Database
+Versioned storage
+Searchable by criteria" fillcolor="#4DB6AC" shape=cylinder style=filled]
+		n22 [label="📈 DeepEval Results Log
+Confident AI Platform
+Tracking & analytics" fillcolor="#4DB6AC" shape=cylinder style=filled]
+	}
+	n23 [label="⚠️ ERROR HANDLER
+Log failure
+Notify team
+Retry with adjustments" color=red fillcolor="#FFCDD2" penwidth=2 shape=box style=filled]
+	n24 [label="END
+Case Ready for Use" fillcolor=lightcoral penwidth=2 shape=ellipse style=filled]
+	n1 -> n2
+	n2 -> n3
+	n3 -> n4 [label="Submit request"]
+	n4 -> n5
+	n5 -> n6 [label="Task 1" color=blue style=bold]
+	n5 -> n7 [label="Task 2" color=blue style=bold]
+	n5 -> n9 [label="Task 3" color=blue style=bold]
+	n6 -> n8 [label=Validate]
+	n7 -> n8 [label=Validate]
+	n9 -> n8 [label=Validate]
+	n8 -> n10 [label="Ready for validation" color=purple style=bold]
+	n10 -> n11
+	n10 -> n12
+	n10 -> n13
+	n10 -> n14
+	n11 -> n15 [label=Score color=green]
+	n12 -> n15 [label=Score color=green]
+	n13 -> n15 [label=Score color=green]
+	n14 -> n15 [label=Score color=green]
+	n15 -> n16 [label="YES
+(All pass)" color=green]
+	n15 -> n23 [label="NO
+(Failed metrics)" color=red style=dashed]
+	n16 -> n17
+	n17 -> n19 [label=YES color=green]
+	n17 -> n18 [label="NO
+(Needs revision)" color=orange style=dashed]
+	n18 -> n4 [label=Iterate color=orange style=dashed]
+	n23 -> n4 [label="Retry with adjustments" color=red style=dashed]
+	n19 -> n20
+	n20 -> n21 [label=Store]
+	n20 -> n22 [label="Log metrics"]
+	n21 -> n24
+	n22 -> n24
+}
